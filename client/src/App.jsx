@@ -1,11 +1,14 @@
+import Header from './Header.jsx'
+import Footer from './Footer.jsx'
 import './App.css'
 
 function App() {
 
   return (
-      <h1 className="text-3xl text-red-200">
-      Hello world!
-     </h1>
+    <div>
+     <Header />
+     <Footer />
+     </div>
   )
 }
 
