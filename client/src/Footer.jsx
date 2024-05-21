@@ -5,8 +5,8 @@ export default function Footer() {
     <footer
     className="mt-20 bg-indigo-50 text-center lg:text-left">
     {/* <!--Check responsiveness--> */}
-    <div className="mx-20 p-6 text-neutral-800">
-      <div className="flex gap-2 container mx-auto">
+    <div className="lg:mx-20 p-6 text-neutral-800">
+      <div className="flex flex-col md:flex-row md:gap-2 md:container md:mx-auto">
         <div className="mb-6 md:mb-0">
           <h5 className="text-lg text-indigo-800 mb-2 font-semibold">Projekt</h5>
 
