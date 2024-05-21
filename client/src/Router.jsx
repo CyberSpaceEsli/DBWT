@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './Home.jsx'
-import LogIn from "./LogIn.jsx";
+import LogIn from './LogIn.jsx';
 import Impressum from './Impressum.jsx'
 import NoPage from "./NoPage.jsx";
 import './App.css'
