@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 // Routes import
 const school = require("./routes/school.routes");
+const kindergarden = require("./routes/kindergarden.routes");
 require("dotenv").config();
 
 const app = express();
@@ -23,8 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 // @TODO create your own base URL for your API here, i.e.:
 app.use("/api/v1/schools", school);
-app.use("/api/v1/schools/all", school);
-app.use("/api/v1/schools/onKind", school);
+app.use("/api/v1/kindergarden", kindergarden);
 
 app.listen(port, ()=>{
     console.log("Server is running on localhost:", port , " !")

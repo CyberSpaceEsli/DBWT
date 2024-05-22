@@ -3,17 +3,15 @@ const School = require("../models/school.model");
 
 // Request for all Persons in respons, no requestParam or Body needed
 // Endpoint: /all
-exports.all_schools = (req, res)=>{
+exports.all_schools = (req, res) =>{
     School.find({})
     .then((schools)=>(res.status(200).send(schools)))
     .catch((err)=>(res.status(500).send(err)))
 }
 
-console.log("Hello",req.query.ART);
-
 // @TODO CRUD Controllers
 // Endpoint: /onKind?kind=Grundschule
-exports.on_kind_school = (req, res)=> {
+exports.on_kind_school = (req, res) =>  {
     School.find({ "kind":req.query.ART })
     .then((schools)=>(res.status(200).send(schools)))
     .catch((err)=>(res.status(500).send(err)))
