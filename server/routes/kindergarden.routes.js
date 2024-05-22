@@ -4,6 +4,7 @@ const router = express.Router();
 const kindergardenController = require("../controllers/kindergarden.controller");
 
 // localhost:5000/api/v1/persons/all METHOD: GET
+// Get all kindergarden
 router.get("/all",kindergardenController.all_kindergarden);
 
 //router.get("/:id",schoolController.on_id_school);

@@ -4,8 +4,10 @@ const router = express.Router();
 const schoolController = require("../controllers/school.controller");
 
 // localhost:5000/api/v1/persons/all METHOD: GET
+//Get all schools
 router.get("/all",schoolController.all_schools);
 
+//Get schools by kind
 router.get("/onKind",schoolController.on_kind_school);
 
 //router.get("/:id",schoolController.on_id_school);

@@ -18,6 +18,11 @@ mongoose.connect(mongoDbUrl)
     .then(()=>(console.log("MongoDB connected ... ")))
     .catch(err=>console.log(err))
 
+//middleware 
+app.use((req, res, next) => {
+    console.log(req.path, req.method, res.statusCode)
+    next()
+} )
 
 app.use(cors());
 app.use(express.json());
