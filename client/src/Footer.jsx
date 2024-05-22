@@ -3,7 +3,7 @@
 export default function Footer() {
   return (
     <footer
-    className="mt-20 bg-indigo-50 text-center lg:text-left">
+    className="mt-2 bg-indigo-50 text-center lg:text-left">
     {/* <!--Check responsiveness--> */}
     <div className="lg:mx-20 p-6 text-neutral-800">
       <div className="flex flex-col md:flex-row md:gap-2 md:container md:mx-auto">

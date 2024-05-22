@@ -11,19 +11,19 @@ export default function Filter() {
 <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-indigo-200 rounded-lg sm:flex">
     <li className="w-full border-b border-indigo-200 sm:border-b-0 sm:border-r">
         <div className="flex items-center ps-3">
-            <input id="vue-checkbox-list" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1" />
-            <label className="w-full py-3 ms-2 text-sm font-medium text-gray-900">Alle</label>
+            <input id="checkbox-all-institutions" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1" />
+            <label htmlFor="checkbox-all-institutions" className="w-full py-3 ms-2 text-sm font-medium text-gray-900">Alle</label>
         </div>
     </li>
     <li className="w-full border-b border-indigo-200 sm:border-b-0 sm:border-r">
-    <div className="flex space-x-36 lg:space-x-44">       
+    <div className="flex space-x-36 lg:space-x-40">       
             <div className="flex items-center ps-3">
-                <input id="vue-checkbox-list" type="checkbox" value="" className="w-3.5 h-3 border border-gray-600 rounded-sm focus:ring-indigo-400 focus:ring-1 accent-red-300"/>
-                <label className="w-full py-3 ms-2 text-sm font-medium text-gray-900 flex items-center">Schulen <div className="ml-1 h-1.5 w-1.5 rounded-full bg-red-300"></div></label>
+                <input id="checkbox-schools" type="checkbox" value="" className="w-3.5 h-3 border border-gray-600 rounded-sm focus:ring-indigo-400 focus:ring-1 accent-red-300"/>
+                <label htmlFor="checkbox-schools" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 flex items-center">Schulen <div className="ml-1 h-1.5 w-1.5 rounded-full bg-red-300"></div></label>
             </div>
 
 
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center pr-3">
                 <Disclosure>
                 <div className="flex items-end">
                 <DisclosureButton onClick={() => setDropdownOpen(!dropdownOpen)} className="flex items-center text-grey-200 font-medium text-sm text-center">
@@ -47,19 +47,19 @@ export default function Filter() {
                             <li>
                                 <div className="flex items-center">
                                     <input id="checkbox-item-1" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-indigo-200 rounded focus:ring-blue-500 focus:ring-1" />
-                                    <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Alle Schulen</label>
+                                    <label htmlFor="checkbox-item-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Alle Schulen</label>
                                 </div>
                             </li>
                             <li>
                                 <div className="flex items-center">
-                                    <input checked id="checkbox-item-2" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
-                                    <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Grundschulen</label>
+                                    <input id="checkbox-item-2" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
+                                    <label htmlFor="checkbox-item-2" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Grundschulen</label>
                                 </div>
                             </li>
                             <li>
                                 <div className="flex items-center">
                                     <input id="checkbox-item-3" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
-                                    <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gymnasium</label>
+                                    <label htmlFor="checkbox-item-3" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gymnasium</label>
                                 </div>
                             </li>
                         </ul>
@@ -71,8 +71,8 @@ export default function Filter() {
     </li>
     <li className="w-full border-b border-indigo-200 sm:border-b-0 sm:border-r">
         <div className="flex items-center ps-3">
-            <input id="react-checkbox-list" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-green-300" />
-            <label className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Kindertagesstätten <div className="ml-1 h-1.5 w-1.5 rounded-full bg-green-300"></div></label>
+            <input id="checkbox-kindergarden" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-green-300" />
+            <label htmlFor="checkbox-kindergarden" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Kindertagesstätten <div className="ml-1 h-1.5 w-1.5 rounded-full bg-green-300"></div></label>
 
                 <button id="dropdownBgHoverButton" data-dropdown-toggle="dropdownBgHover" className="text-grey-200 hover:text-indigo-800 font-medium text-sm pr-3 text-center inline-flex items-center" type="button">
                     <svg className="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -83,8 +83,8 @@ export default function Filter() {
     </li>
         <li className="w-full border-b border-indigo-200 sm:border-b-0 sm:border-r">
         <div className="flex items-center ps-3">
-            <input id="angular-checkbox-list" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-yellow-300" />
-            <label className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Schulsozialarbeit <div className="ml-1 h-1.5 w-1.5 rounded-full bg-yellow-300"></div></label>
+            <input id="checkbox-social-work" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-yellow-300" />
+            <label htmlFor="checkbox-social-work" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Schulsozialarbeit <div className="ml-1 h-1.5 w-1.5 rounded-full bg-yellow-300"></div></label>
 
                 <button id="dropdownBgHoverButton" data-dropdown-toggle="dropdownBgHover" className="text-grey-200 hover:text-indigo-800 font-medium text-sm pr-3 text-center inline-flex items-center" type="button">
                     <svg className="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -95,8 +95,8 @@ export default function Filter() {
     </li>
     <li className="w-full">
         <div className="flex items-center ps-3">
-            <input id="laravel-checkbox-list" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-purple-300"/>
-            <label className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Jugendberufshilfen <div className="ml-1 h-1.5 w-1.5 rounded-full bg-purple-300"></div></label>
+            <input id="checkbox-youth-work-assistance" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-purple-300"/>
+            <label htmlFor="checkbox-youth-work-assistance" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Jugendberufshilfen <div className="ml-1 h-1.5 w-1.5 rounded-full bg-purple-300"></div></label>
 
                 <button id="dropdownBgHoverButton" data-dropdown-toggle="dropdownBgHover" className="text-grey-200 hover:text-indigo-800 font-medium text-sm pr-3 text-center inline-flex items-center" type="button">
                     <svg className="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
