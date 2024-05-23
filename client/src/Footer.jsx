@@ -36,7 +36,7 @@ export default function Footer() {
     {/* <!--Copyright section--> */}
     <div
       className="bg-indigo-800 p-4 text-center text-indigo-200 rounded-t-lg">
-      © 2023 Copyright:
+      © 2024 Copyright:
       <a
         className="text-indigo-200 pl-0.5"
         href="#"

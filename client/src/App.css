@@ -5,12 +5,26 @@
 /* sizing of map container */
 .leaflet-container {
     height: 600px;
-    width: 1200px;;
+    width: 1400px;;
 }
 
 @media (max-width: 480px) {
   .leaflet-container {
     height: 350px;
     width: 350px;;
+  }
 }
+
+@media (max-width: 767px) and (min-width: 481px) {
+  .leaflet-container {
+    height: 370px;
+    width: 520px;;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .leaflet-container {
+    height: 500px;
+    width: 750px;;
+  }
 }

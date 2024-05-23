@@ -5,27 +5,27 @@ export default function Filter() {
      const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-<div className="my-5 md:container md:mx-auto p-6 xl:p-0">
+<div className="my-5 lg:container md:mx-auto p-6 lg:p-0">
 
 <h3 className="mb-4 font-semibold text-gray-900">Filteroptionen</h3>
-<ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-indigo-200 rounded-lg sm:flex">
-    <li className="w-full border-b border-indigo-200 sm:border-b-0 sm:border-r">
+<ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-indigo-200 rounded-lg lg:flex">
+    <li className="w-full border-b border-indigo-200 lg:border-b-0 lg:border-r">
         <div className="flex items-center ps-3">
-            <input id="checkbox-all-institutions" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1" />
+            <input id="checkbox-all-institutions" type="checkbox" value="" className="w-3 h-3 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1" />
             <label htmlFor="checkbox-all-institutions" className="w-full py-3 ms-2 text-sm font-medium text-gray-900">Alle</label>
         </div>
     </li>
-    <li className="w-full border-b border-indigo-200 sm:border-b-0 sm:border-r">
-    <div className="flex space-x-36 lg:space-x-40">       
-            <div className="flex items-center ps-3">
-                <input id="checkbox-schools" type="checkbox" value="" className="w-3.5 h-3 border border-gray-600 rounded-sm focus:ring-indigo-400 focus:ring-1 accent-red-300"/>
+    <li className="w-full border-b border-indigo-200 lg:border-b-0 lg:border-r">
+    <div className="flex">       
+            <div className="w-full flex items-center ps-3">
+                <input id="checkbox-schools" type="checkbox" value="" className="w-3 h-3 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1 accent-red-300"/>
                 <label htmlFor="checkbox-schools" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 flex items-center">Schulen <div className="ml-1 h-1.5 w-1.5 rounded-full bg-red-300"></div></label>
             </div>
 
 
             <div className="flex flex-col justify-center pr-3">
                 <Disclosure>
-                <div className="flex items-end">
+                <div className="flex justify-end">
                 <DisclosureButton onClick={() => setDropdownOpen(!dropdownOpen)} className="flex items-center text-grey-200 font-medium text-sm text-center">
                     <div className="flex items-end">
                         {!dropdownOpen && (
@@ -69,7 +69,7 @@ export default function Filter() {
             </div>
         </div>
     </li>
-    <li className="w-full border-b border-indigo-200 sm:border-b-0 sm:border-r">
+    <li className="w-full border-b border-indigo-200 lg:border-b-0 lg:border-r">
         <div className="flex items-center ps-3">
             <input id="checkbox-kindergarden" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-green-300" />
             <label htmlFor="checkbox-kindergarden" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Kindertagesstätten <div className="ml-1 h-1.5 w-1.5 rounded-full bg-green-300"></div></label>
@@ -81,7 +81,7 @@ export default function Filter() {
                 </button>
         </div>
     </li>
-        <li className="w-full border-b border-indigo-200 sm:border-b-0 sm:border-r">
+        <li className="w-full border-b border-indigo-200 lg:border-b-0 lg:border-r">
         <div className="flex items-center ps-3">
             <input id="checkbox-social-work" type="checkbox" value="" className="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-yellow-300" />
             <label htmlFor="checkbox-social-work" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Schulsozialarbeit <div className="ml-1 h-1.5 w-1.5 rounded-full bg-yellow-300"></div></label>
