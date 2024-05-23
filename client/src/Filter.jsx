@@ -5,7 +5,7 @@ export default function Filter() {
      const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-<div className="my-5 md:container md:mx-auto p-6 md:p-0">
+<div className="my-5 md:container md:mx-auto p-6 xl:p-0">
 
 <h3 className="mb-4 font-semibold text-gray-900">Filteroptionen</h3>
 <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-indigo-200 rounded-lg sm:flex">

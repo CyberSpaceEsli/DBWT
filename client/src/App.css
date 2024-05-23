@@ -4,6 +4,13 @@
 
 /* sizing of map container */
 .leaflet-container {
-    height: 400px;
-    width: 600px;;
+    height: 600px;
+    width: 1200px;;
+}
+
+@media (max-width: 480px) {
+  .leaflet-container {
+    height: 350px;
+    width: 350px;;
+}
 }
