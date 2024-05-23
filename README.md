@@ -13,7 +13,7 @@ $ cd DBWT
 
 #### Install backend dependencies
 ```
-$cd server
+$cd backend
 $npm install
 ```
 
@@ -25,4 +25,4 @@ $npm install
 
 ## 🚀 Run Application
 
-``npm run server && npm run dev``
+``npm run thursday && npm run dev``
