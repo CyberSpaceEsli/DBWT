@@ -21,7 +21,7 @@ export default function Header() {
               <span className="sr-only">Your Company</span>
               <img
                 className="h-8 w-auto"
-                src="/public/point-of-interest.png"
+                src="/point-of-interest.png"
                 alt="POI"
               />
             </a>
@@ -57,7 +57,7 @@ export default function Header() {
                 <span className="sr-only">Your Company</span>
                 <img
                   className="h-8 w-auto"
-                  src="/public/point-of-interest.png"
+                  src="/point-of-interest.png"
                   alt="POI"
                 />
               </a>
