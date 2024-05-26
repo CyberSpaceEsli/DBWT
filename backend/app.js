@@ -1,18 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
+
 // Routes import
 const school = require("./routes/school.routes");
 const kindergarden = require("./routes/kindergarden.routes");
-require("dotenv").config();
+const socialChildProjects = require("./routes/socialChildProject.routes");
+const socialTeenagerProjects = require("./routes/socialTeenagerProject.routes");
+
 
 const app = express();
+
 //@TODO create your own Port number here, i.e.:
-const port = 3000;
+const port = process.env.PORT;
 // @TODO add your own dotenv or hard-coded connection string here
-//const mongoDbUrl = process.env.CONN_STRING;
-const mongoDbUrl = "mongodb://127.0.0.1:27017/open_data_chemnitz";
-// If you have MongoDB Cluster(Cloud), get your Connection String
+const mongoDbUrl = process.env.MONG_URI;
 
 mongoose.connect(mongoDbUrl)
     .then(()=>(console.log("MongoDB connected ... ")))
@@ -30,6 +33,8 @@ app.use(express.urlencoded({extended:true}));
 // @TODO create your own base URL for your API here, i.e.:
 app.use("/api/v1/schools", school);
 app.use("/api/v1/kindergarden", kindergarden);
+app.use("/api/v1/socialchildprojects", socialChildProjects);
+app.use("/api/v1/socialteenagerprojects", socialTeenagerProjects);
 
 app.listen(port, ()=>{
     console.log("Server is running on localhost:", port , " !")
