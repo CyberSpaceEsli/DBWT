@@ -19,7 +19,7 @@ export default function Filter() {
     <div className="flex">       
             <div className="w-full flex items-center ps-3">
                 <input id="checkbox-schools" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1 accent-red-300"/>
-                <label htmlFor="checkbox-schools" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 flex items-center">Schulen <div className="ml-1 h-1.5 w-1.5 rounded-full bg-red-300"></div></label>
+                <label htmlFor="checkbox-schools" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 flex items-center">Schulen <div className="ml-1 h-1.5 w-1.5 rounded-full bg-red-400"></div></label>
             </div>
 
 
@@ -71,8 +71,8 @@ export default function Filter() {
     </li>
     <li className="w-full border-b border-indigo-200 lg:border-b-0 lg:border-r">
         <div className="flex items-center ps-3">
-            <input id="checkbox-kindergarden" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-green-300" />
-            <label htmlFor="checkbox-kindergarden" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Kindertagesstätten <div className="ml-1 h-1.5 w-1.5 rounded-full bg-green-300"></div></label>
+            <input id="checkbox-kindergarden" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-blue-400" />
+            <label htmlFor="checkbox-kindergarden" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Kindertagesstätten <div className="ml-1 h-1.5 w-1.5 rounded-full bg-blue-400"></div></label>
 
                 <button id="dropdownBgHoverButton" data-dropdown-toggle="dropdownBgHover" className="text-grey-200 hover:text-indigo-800 font-medium text-sm pr-3 text-center inline-flex items-center" type="button">
                     <svg className="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -83,8 +83,8 @@ export default function Filter() {
     </li>
         <li className="w-full border-b border-indigo-200 lg:border-b-0 lg:border-r">
         <div className="flex items-center ps-3">
-            <input id="checkbox-social-work" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-yellow-300" />
-            <label htmlFor="checkbox-social-work" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Schulsozialarbeit <div className="ml-1 h-1.5 w-1.5 rounded-full bg-yellow-300"></div></label>
+            <input id="checkbox-social-work" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-pink-400" />
+            <label htmlFor="checkbox-social-work" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Schulsozialarbeit <div className="ml-1 h-1.5 w-1.5 rounded-full bg-pink-400"></div></label>
 
                 <button id="dropdownBgHoverButton" data-dropdown-toggle="dropdownBgHover" className="text-grey-200 hover:text-indigo-800 font-medium text-sm pr-3 text-center inline-flex items-center" type="button">
                     <svg className="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -95,8 +95,8 @@ export default function Filter() {
     </li>
     <li className="w-full">
         <div className="flex items-center ps-3">
-            <input id="checkbox-youth-work-assistance" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-purple-300"/>
-            <label htmlFor="checkbox-youth-work-assistance" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Jugendberufshilfen <div className="ml-1 h-1.5 w-1.5 rounded-full bg-purple-300"></div></label>
+            <input id="checkbox-youth-work-assistance" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1  accent-purple-400"/>
+            <label htmlFor="checkbox-youth-work-assistance" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 flex items-center">Jugendberufshilfen <div className="ml-1 h-1.5 w-1.5 rounded-full bg-purple-400"></div></label>
 
                 <button id="dropdownBgHoverButton" data-dropdown-toggle="dropdownBgHover" className="text-grey-200 hover:text-indigo-800 font-medium text-sm pr-3 text-center inline-flex items-center" type="button">
                     <svg className="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">

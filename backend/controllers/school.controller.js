@@ -3,41 +3,26 @@ const School = require("../models/school.model");
 
 // Request for all Persons in respons, no requestParam or Body needed
 // Endpoint: /all
-exports.all_schools = (req, res) =>{
-    School.find({})
-    .then((schools)=>(res.status(200).send(schools)))
-    .catch((err)=>(res.status(500).send(err)))
+exports.all_schools = async (req, res) =>{
+       try {
+    // Fetch data from MongoDB
+    const schools = await School.find({});
+
+    if (!schools || schools.length === 0) {
+      return res.status(404).json({ message: 'No data found' });
+    }
+
+    // Log the entire data fetched from MongoDB
+    console.log("Data from MongoDB:", schools);
+
+    // Return the extracted 'features' array
+    res.json(schools);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 }
 
-// @TODO CRUD Controllers
-// Endpoint: /onKind?kind=Grundschule
-exports.on_kind_school = (req, res) =>  {
-    School.find({ "kind":req.query.ART })
-    .then((schools)=>(res.status(200).send(schools)))
-    .catch((err)=>(res.status(500).send(err)))
-}
-
-/*
-
-exports.on_id_school = (req, res)=> {
-    School.find({ "_id":req.query.id })
-    .then((schools)=>(res.status(200).send(schools)))
-    .catch((err)=>(res.status(500).send(err)))
-}
-
-exports.on_plz_school = (req, res)=> {
-    School.find({ "PLZ":req.query.PLZ })
-    .then((schools)=>(res.status(200).send(schools)))
-    .catch((err)=>(res.status(500).send(err)))
-}
-
-exports.create_school = (req, res)=> {
-    School.create(req.body)
-    .then((schools)=>(res.status(200).send(schools)))
-    .catch((err)=>(res.status(500).send(err)))
-}
-
-*/
 
 
 // Missleading endpoint handling

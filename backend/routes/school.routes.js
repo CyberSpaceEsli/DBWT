@@ -7,9 +7,6 @@ const schoolController = require("../controllers/school.controller");
 //Get all schools
 router.get("/all",schoolController.all_schools);
 
-//Get schools by kind
-router.get("/onKind",schoolController.on_kind_school);
-
 // * Endpoint as * Method error handling
 router.get("/*",schoolController.error);
 

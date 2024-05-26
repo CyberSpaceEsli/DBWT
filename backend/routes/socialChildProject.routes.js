@@ -3,8 +3,8 @@ const router = express.Router();
 // Controller import, could also be named import
 const socialChildProjectController = require("../controllers/socialChildProject.controller");
 
-// localhost:3000/api/v1/persons/all METHOD: GET
-// Get all kindergarden
+// localhost:3000/api/v1/socialchildprojects/all METHOD: GET
+// Get all social child projects
 router.get("/all",socialChildProjectController.all_socialChildProjects);
 
 //router.get("/:id",schoolController.on_id_school);
