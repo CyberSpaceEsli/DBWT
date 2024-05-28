@@ -12,6 +12,7 @@ export default function SocialTeenagerProjectDetails({ project }) {
     iconUrl: POIPurple,
     iconSize: [25, 25],
     iconAnchor: [10, 25],
+    popupAnchor: [3, -23]
   })
 
  

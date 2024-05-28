@@ -12,6 +12,7 @@ export default function KindergardenDetails({ kindergarden }) {
     iconUrl: POIBlue,
     iconSize: [25, 25],
     iconAnchor: [10, 25],
+    popupAnchor: [3, -23]
   })
 
  
@@ -21,10 +22,9 @@ export default function KindergardenDetails({ kindergarden }) {
         position={[kindergarden.Y, kindergarden.X]} >
         <Popup>
             <strong>{kindergarden.BEZEICHNUNG}</strong><br />
-            Art: {kindergarden.ART},<br />
             Tel.: {kindergarden.TELEFON},<br />
             E-Mail: {kindergarden.EMAIL}, <br />
-            Straße: {kindergarden.STRASSE},<br />
+            Straße: {kindergarden.STRASSE} {kindergarden.HAUSBEZ} ,<br />
             Plz: {kindergarden.PLZ},
             Ort: {kindergarden.ORT}
         </Popup>
