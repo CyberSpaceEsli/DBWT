@@ -3,8 +3,9 @@ import 'leaflet/dist/leaflet.css'
 import { useState, useEffect } from "react";
 import SchoolDetails from './SchoolDetails.jsx'
 import { MapContainer, TileLayer} from 'react-leaflet'
+import PropTypes from 'prop-types';
 
-export default function Map() {
+export default function Map({ showSchoolDetails }) {
   const [schools, setSchools] = useState(null);
 
   //only triggered once on compoent load due to []
@@ -38,10 +39,14 @@ export default function Map() {
         />
        
       {console.log("Schulen", schools)}
-      {schools && schools.map((school, index) => (
-          <SchoolDetails school={school} key={index} />
+      {showSchoolDetails && schools && schools.map((school, index) => (
+          <SchoolDetails school={school} key={index}/>
       ))}
     </MapContainer>
    </div>
   );
 }
+
+Map.propTypes = {
+  showSchoolDetails: PropTypes.bool.isRequired,
+};

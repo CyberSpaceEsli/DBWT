@@ -5,7 +5,7 @@ import POIRed from './assets/POI_red_400.png'
 import PropTypes from 'prop-types';
 
 
-export default function SchoolDetails({ school, index }) {
+export default function SchoolDetails({ school }) {
 
   //customIcon for schools
   const customIcon = new Icon({
@@ -17,7 +17,6 @@ export default function SchoolDetails({ school, index }) {
  
   return (
         <Marker
-        key={index}
         icon={customIcon}
         position={[school.Y, school.X]} >
         <Popup>
@@ -34,6 +33,5 @@ export default function SchoolDetails({ school, index }) {
 }
 
 SchoolDetails.propTypes = {
-  school: PropTypes.any.isRequired,
-  index: PropTypes.number.isRequired
+  school: PropTypes.any.isRequired
 }
