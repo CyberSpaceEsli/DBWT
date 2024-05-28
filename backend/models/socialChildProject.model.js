@@ -3,25 +3,18 @@ const Schema = mongoose.Schema;
 
 const SocialChildProjectSchema = new Schema({
     //@TODO add your required Keys, Datastructures and Schema logic
-    type: {type:"String", required: true},
-    properties: {
-        OBJECTID: {type:"Number", required: true},
-        ID: {type:"Number", required: true},
-        TRAEGER: {type:"String", required: true},
-        LEISTUNGEN: {type:"String", required: true},
-        BEZEICHNUNG: {type:"String", required: true},
-        KURZBEZEICHNUNG: {type:"String", required: true},
-        STRASSE: {type:"String", required: true},
-        PLZ: {type:"String", required: true},
-        ORT: {type:"String", required: true},
-        TELEFON: {type:"String", required: true},
-        FAX: {type:"String", required: true},
-        EMAIL: {type:"String", required: true}        
-    },
-    geometry: {
-        type: {type: "String", required: true},
-        coordinates: {type: "Number", required: true}
-    }
+    X: {type:"Number", required: true},
+    Y: {type:"Number", required: true},
+    OBJECTID: {type:"Number", required: true},
+    ID: {type:"Number", required: true},
+    TRAEGER: {type:"String", required: true},
+    LEISTUNGEN: {type:"String", required: true},
+    STRASSE: {type:"String", required: true},
+    PLZ: {type:"String", required: true},
+    ORT: {type:"String", required: true},
+    TELEFON: {type:"String", required: true},
+    FAX: {type:"String", required: false},      
+  
 });
 module.exports = mongoose.model("SocialChildProject", SocialChildProjectSchema, "social_child_projects");
 //module.exports = mongoose.model("People", PersonSchema, "YOUR COLLECTION");
