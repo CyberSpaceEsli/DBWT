@@ -1,18 +1,11 @@
 import './App.css'
 import 'leaflet/dist/leaflet.css'
 import { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-//import { Icon } from 'leaflet';
-//import POIRed from './assets/POI_red.png'
+import SchoolDetails from './SchoolDetails.jsx'
+import { MapContainer, TileLayer} from 'react-leaflet'
 
 export default function Map() {
   const [schools, setSchools] = useState(null);
-
-  //customIcon for schools
-  /*const customIcon = new Icon({
-    iconUrl: POIRed,
-    iconSize: [25, 25] 
-  })*/
 
   //only triggered once on compoent load due to []
   useEffect(() => {
@@ -46,19 +39,7 @@ export default function Map() {
        
       {console.log("Schulen", schools)}
       {schools && schools.map((school, index) => (
-          <Marker
-            key={index}
-            position={[school.Y, school.X]} >
-            <Popup>
-              <strong>{school.BEZEICHNUNG}</strong><br />
-              Art: {school.ART},<br />
-              Tel.: {school.TELEFON},<br />
-              E-Mail: {school.EMAIL}, <br />
-              Straße: {school.STRASSE},<br />
-              Plz: {school.PLZ},
-              Ort: {school.ORT}
-            </Popup>
-          </Marker>
+          <SchoolDetails school={school} key={index} />
       ))}
     </MapContainer>
    </div>

@@ -18,7 +18,7 @@ export default function Filter() {
     <li className="w-full border-b border-indigo-200 lg:border-b-0 lg:border-r">
     <div className="flex">       
             <div className="w-full flex items-center ps-3">
-                <input id="checkbox-schools" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1 accent-red-300"/>
+                <input id="checkbox-schools" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1 accent-red-400"/>
                 <label htmlFor="checkbox-schools" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 flex items-center">Schulen <div className="ml-1 h-1.5 w-1.5 rounded-full bg-red-400"></div></label>
             </div>
 
@@ -106,108 +106,6 @@ export default function Filter() {
         </div>
     </li>
 </ul>
-
-{/*<ul className="lg:flex lg:items-center w-full text-sm font-medium text-gray-900 hidden">
-    <li className="w-full mt-1 flex justify-end">
-        <div className="w-48"></div>
-    </li>
-    <li className="w-full mt-1 flex justify-end">
-         <div id="dropdownDefaultCheckbox" className="z-10 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow">
-            <ul className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownCheckboxButton">
-                <li>
-                    <div className="flex items-center">
-                        <input id="checkbox-item-1" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Alle Schulen</label>
-                    </div>
-                </li>
-                <li>
-                    <div className="flex items-center">
-                        <input checked id="checkbox-item-2" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Grundschulen</label>
-                    </div>
-                </li>
-                <li>
-                    <div className="flex items-center">
-                        <input id="checkbox-item-3" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gymnasium</label>
-                    </div>
-                </li>
-            </ul>
-         </div>
-    </li>
-    <li className="w-full mt-1 flex justify-end">
-        <div id="dropdownDefaultCheckbox" className="z-10 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow">
-            <ul className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownCheckboxButton">
-                <li>
-                    <div className="flex items-center">
-                        <input id="checkbox-item-1" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-400 focus:ring-1" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
-                    </div>
-                </li>
-                <li>
-                    <div className="flex items-center">
-                        <input checked id="checkbox-item-2" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Checked state</label>
-                    </div>
-                </li>
-                <li>
-                    <div className="flex items-center">
-                        <input id="checkbox-item-3" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
-                    </div>
-                </li>
-            </ul>
-         </div>
-    </li>
-    <li className="w-full mt-1 flex justify-end">
-        <div id="dropdownDefaultCheckbox" className="z-10 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
-            <ul className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownCheckboxButton">
-                <li>
-                    <div className="flex items-center">
-                        <input id="checkbox-item-1" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
-                    </div>
-                </li>
-                <li>
-                    <div className="flex items-center">
-                        <input checked id="checkbox-item-2" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Checked state</label>
-                    </div>
-                </li>
-                <li>
-                    <div className="flex items-center">
-                        <input id="checkbox-item-3" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-1" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
-                    </div>
-                </li>
-            </ul>
-         </div>
-    </li>
-    <li className="w-full mt-1 flex justify-end">
-        <div id="dropdownDefaultCheckbox" className="z-10 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
-            <ul className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownCheckboxButton">
-                <li>
-                    <div className="flex items-center">
-                        <input id="checkbox-item-1" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
-                    </div>
-                </li>
-                <li>
-                    <div className="flex items-center">
-                        <input checked id="checkbox-item-2" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Checked state</label>
-                    </div>
-                </li>
-                <li>
-                    <div className="flex items-center">
-                        <input id="checkbox-item-3" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                        <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
-                    </div>
-                </li>
-            </ul>
-         </div>
-    </li>
-  </ul> */}
 
 </div>
 
