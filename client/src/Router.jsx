@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './Home.jsx'
-import LogIn from './LogIn.jsx';
-import SignUp from './SignUp.jsx';
-import Impressum from './Impressum.jsx'
-import NoPage from "./NoPage.jsx";
+import Home from './components/Home.jsx'
+import LogIn from './components/LogIn.jsx';
+import SignUp from './components/SignUp.jsx';
+import Impressum from './components/Impressum.jsx'
+import NoPage from "./components/NoPage.jsx";
 import './App.css'
 
 function Router() {

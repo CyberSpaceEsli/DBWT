@@ -1,7 +1,7 @@
 import 'leaflet/dist/leaflet.css'
 import { Marker, Popup } from 'react-leaflet'
 import { Icon } from 'leaflet';
-import POIRed from './assets/POI_red_400.png'
+import POIRed from '../assets/POI_red_400.png'
 import PropTypes from 'prop-types';
 
 
