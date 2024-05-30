@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Profile from './Profile.jsx'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -47,6 +48,7 @@ export default function Header() {
             <a href="/anmelden" className="text-sm font-semibold leading-6 text-gray-900">
               Anmelden <span aria-hidden="true">&rarr;</span>
             </a>
+            <Profile />
           </div>
         </nav>
         <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>

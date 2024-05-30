@@ -4,6 +4,7 @@ import LogIn from './components/LogIn.jsx';
 import SignUp from './components/SignUp.jsx';
 import Impressum from './components/Impressum.jsx'
 import NoPage from "./components/NoPage.jsx";
+import ProfileData from "./components/ProfileData.jsx";
 import './App.css'
 
 function Router() {
@@ -26,6 +27,9 @@ function Router() {
 
              {/* SignUp */}
             <Route path="registrieren" element={<SignUp />} />
+
+             {/* Profile Data */}
+            <Route path="profil" element={<ProfileData />} />
 
             {/* 404 Page */}
             <Route path="*" element={<NoPage />} />
