@@ -1,5 +1,12 @@
+import { useState } from 'react'
 
 export default function ProfileData() {
+    const [facility, setFacility] = useState('')
+    const [street, setStreet] = useState('')
+    const [city, setCity] = useState('')
+    const [plz, setPLZ] = useState('')
+
+
   return (
     <div className="overflow-hidden bg-white">
         <form className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
@@ -28,6 +35,8 @@ export default function ProfileData() {
                   type="text"
                   name="fav-facility"
                   id="fav-facility"
+                  onChange={ (e) => setFacility(e.target.value) }
+                  value={facility}
                   autoComplete="fav-facility"
                   className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -55,6 +64,8 @@ export default function ProfileData() {
                   type="text"
                   name="street-address"
                   id="street-address"
+                  onChange={ (e) => setStreet(e.target.value) }
+                  value={street}
                   autoComplete="street-address"
                   className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -70,6 +81,8 @@ export default function ProfileData() {
                   type="text"
                   name="city"
                   id="city"
+                  onChange={ (e) => setCity(e.target.value) }
+                  value={city}
                   autoComplete="address-level2"
                   className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   defaultValue="Chemnitz"
@@ -83,9 +96,11 @@ export default function ProfileData() {
               </label>
               <div className="mt-2">
                 <input
-                  type="text"
+                  type="number"
                   name="postal-code"
                   id="postal-code"
+                  onChange={ (e) => setPLZ(e.target.value) }
+                  value={plz}
                   autoComplete="postal-code"
                   className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />

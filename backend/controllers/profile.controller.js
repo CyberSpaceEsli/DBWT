@@ -9,39 +9,55 @@ exports.all_profiles = (req, res) =>  {
     .catch((err)=>(res.status(500).send(err)))
 }
 
-// Endpoint: /onEmail?email=...
-exports.on_email_profile = (req, res) =>  {
-    Profile.find({ "email":req.query.EMAIL })
+// Endpoint: /onid?id=...
+exports.on_id = (req, res) =>  {
+    Profile.findOne({ "id":req.query._id })
     .then((profiles)=>(res.status(200).send(profiles)))
     .catch((err)=>(res.status(500).send(err)))
 }
 
-// Request for all Persons in respons, no requestParam or Body needed
-// Endpoint: /createprofile
-/*exports.create_profile = (req, res) =>{
-    const {email, pwd}  = req.body
+// Handling user signup
+exports.signup =  (req, res) => {
+    Profile.findOne({ username: req.body.username })
+        .then(existingProfile => {
+            if (existingProfile) {
+                return res.status(400).json({ message: 'Profile already exists' });
+            }})
+        
+    Profile.create({
+      username: req.body.username,
+      password: req.body.password
+    })
+    .then(() => res.status(200).json({message: 'Profile created successfully'}))
+    .catch(err => res.status(500).json({ error: err.message }));
+  };
+ 
 
-    Profile.create(req.body)
-    .then((profile)=>(res.status(200).create({email, pwd})))
-    .catch((err)=>(res.status(500).send(err)))
-}*/
+// Login controller
+exports.login = (req, res) => {
+    const { username, password } = req.body;
 
-// Endpoint: /updateprofile
-/*exports.update_profile = (req, res) =>{
-    const {email, pwd}  = req.body
+    // Find user by username
+    Profile.findOne({ username })
+        .then(user => {
+            if (!user) {
+                return res.status(400).json({ message: 'Invalid credentials' });
+            }
 
-    Profile.update(req.body)
-    .then((profile)=>(res.status(200).update({email, pwd})))
-    .catch((err)=>(res.status(500).send(err)))
-}*/
+            // Check if the password matches
+            if (user.password !== password) {
+                return res.status(400).json({ message: 'Invalid credentials' });
+            }
 
-// Endpoint: /deleteprofile
-/*exports.delete_profile = (req, res) =>{
+            res.status(200).json({ message: 'Login successful' });
+        })
+        .catch(err => res.status(500).json({ error: err.message }));
+};
 
-    Profile.delete({id:'_id'})
-    .then((profile)=>(res.status(200).delete()))
-    .catch((err)=>(res.status(500).send(err)))
-}*/
+// Logout controller
+exports.logout = (req, res) => {
+    res.status(200).json({ message: 'Logged out successfully' });
+};
 
 
 // Missleading endpoint handling

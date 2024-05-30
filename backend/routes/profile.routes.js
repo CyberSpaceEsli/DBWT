@@ -4,18 +4,28 @@ const router = express.Router();
 const profileController = require("../controllers/profile.controller");
 
 // localhost:3000/api/v1/schools/all METHOD: GET
-//Get all profiles
-router.get("/all",schoolController.all_profiles);
+router.get("/all", profileController.all_profiles)
 
-//Get profile by email address
-router.get("/onEmail",schoolController.on_email_profile);
+//Get profile by id
+router.get("/id",profileController.on_id);
 
+//SignUp Profile
+router.post("/signup",profileController.signup);
 
-//Get profile by email address
-router.post("/",schoolController.create_profile);
+//LogIn Profile
+router.post("/login",profileController.login);
+
+//LogOut Profile
+router.post("/logout",profileController.logout);
+
+//Delete profile
+//router.delete("/",profileController.delete);
+
+//Update profile 
+//router.update("/",profileController.update);
 
 // * Endpoint as * Method error handling
-router.get("/*",schoolController.error);
+router.get("/*",profileController.error);
 
 // All routes export
 module.exports = router;
