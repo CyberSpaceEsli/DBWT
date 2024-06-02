@@ -5,9 +5,10 @@ import SignUp from './components/SignUp.jsx';
 import Impressum from './components/Impressum.jsx'
 import NoPage from "./components/NoPage.jsx";
 import ProfileData from "./components/ProfileData.jsx";
+import PropTypes from 'prop-types';
 import './App.css'
 
-function Router() {
+function Router({ isAuthenticated, setAuthStatus }) {
 
   return (
      <BrowserRouter>
@@ -23,13 +24,14 @@ function Router() {
             <Route path="impressum" element={<Impressum />} />
 
              {/* LogIn */}
-            <Route path="anmelden" element={<LogIn />} />
+             {console.log("Auth", isAuthenticated)}
+            <Route path="anmelden" element={<LogIn setAuthStatus={setAuthStatus}/>} />
 
              {/* SignUp */}
             <Route path="registrieren" element={<SignUp />} />
 
              {/* Profile Data */}
-            <Route path="profil" element={<ProfileData />} />
+            <Route path="profil" element={<ProfileData isAuthenticated={isAuthenticated} />} />
 
             {/* 404 Page */}
             <Route path="*" element={<NoPage />} />
@@ -41,3 +43,8 @@ function Router() {
 }
 
 export default Router
+
+Router.propTypes = {
+  setAuthStatus: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
+};

@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default function LogIn() {
+export default function LogIn({ setAuthStatus }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] =  useState('');
   const [error, setError] = useState(null);
+  const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,6 +31,10 @@ export default function LogIn() {
           setPassword('')
           setError(null)
           console.log("new profile added", json)
+          localStorage.setItem('isAuthenticated', 'true');
+          localStorage.setItem('username', username);
+          setAuthStatus(true);
+          navigate('/')
         }
     };
 
@@ -107,3 +114,7 @@ export default function LogIn() {
     </>
   )
 }
+
+LogIn.propTypes = {
+  setAuthStatus: PropTypes.func.isRequired
+};

@@ -1,10 +1,20 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-export default function ProfileData() {
+export default function ProfileData({ isAuthenticated }) {
     const [facility, setFacility] = useState('')
     const [street, setStreet] = useState('')
-    const [city, setCity] = useState('')
+    const [city, setCity] = useState('Chemnitz')
     const [plz, setPLZ] = useState('')
+
+    console.log("A",isAuthenticated)
+    var username;
+
+    if(isAuthenticated) {
+      username = localStorage.username;
+      console.log("username", username);
+    }
+   
 
 
   return (
@@ -20,7 +30,7 @@ export default function ProfileData() {
 
             <div className="sm:col-span-4 mb-5">
               <p className="block text-sm font-medium leading-6 text-gray-900">
-                Sie sind angemeldet als: ...
+                Sie sind angemeldet als: {username}
               </p>
             </div>
 
@@ -81,11 +91,11 @@ export default function ProfileData() {
                   type="text"
                   name="city"
                   id="city"
-                  onChange={ (e) => setCity(e.target.value) }
-                  value={city}
+                  onChange={ (e) => setCity(e.target.defaultValue) }
                   autoComplete="address-level2"
                   className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  defaultValue="Chemnitz"
+                  defaultValue={city}
+                  readOnly
                 />
               </div>
             </div>
@@ -96,7 +106,7 @@ export default function ProfileData() {
               </label>
               <div className="mt-2">
                 <input
-                  type="number"
+                  type="text"
                   name="postal-code"
                   id="postal-code"
                   onChange={ (e) => setPLZ(e.target.value) }
@@ -119,8 +129,8 @@ export default function ProfileData() {
        </div>
 
        <div href="#" className="mt-8 block p-6 bg-white border border-gray-200 rounded-lg shadow-md shadow-indigo-100">
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Ihre gespeicherten Daten zum Profil.</h5><br />
-          <p className="font-semibold text-gray-700 dark:text-gray-400">Die Lieblingseinrichtung: </p>
+          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Ihre gespeicherten Daten zum Profil: {username}.</h5><br />
+          <p className="font-semibold text-gray-700 dark:text-gray-400">Die Lieblingseinrichtung:</p>
           <p className="block text-sm font-medium leading-6 text-gray-900">...</p> <br />
 
            <p className="font-semibold text-gray-700 dark:text-gray-400">Die Heimadresse: </p>
@@ -133,3 +143,7 @@ export default function ProfileData() {
     </div>
   )
 }
+
+ProfileData.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired
+};

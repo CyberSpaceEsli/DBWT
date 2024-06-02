@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema({
     //@TODO add your required Keys, Datastructures and Schema logic
-    username: {type:"String", required: true },
+    username: {type:"String", required: true},
     password: {type:"String", required: true}
 });
 module.exports = mongoose.model("Profile", ProfileSchema, "profiles");

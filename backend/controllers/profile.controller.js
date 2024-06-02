@@ -9,13 +9,6 @@ exports.all_profiles = (req, res) =>  {
     .catch((err)=>(res.status(500).send(err)))
 }
 
-// Endpoint: /onid?id=...
-exports.on_id = (req, res) =>  {
-    Profile.findOne({ "id":req.query._id })
-    .then((profiles)=>(res.status(200).send(profiles)))
-    .catch((err)=>(res.status(500).send(err)))
-}
-
 // Handling user signup
 exports.signup =  (req, res) => {
     Profile.findOne({ username: req.body.username })

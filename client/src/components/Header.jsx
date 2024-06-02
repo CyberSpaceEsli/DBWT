@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Profile from './Profile.jsx'
+import PropTypes from 'prop-types';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -10,7 +11,7 @@ const navigation = [
   { name: 'Impressum', href: '/impressum' }
 ]
 
-export default function Header() {
+export default function Header({ isAuthenticated, setAuthStatus }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -45,10 +46,13 @@ export default function Header() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+             {isAuthenticated ? ( 
+              <Profile setAuthStatus={setAuthStatus}/>
+             ) : (
             <a href="/anmelden" className="text-sm font-semibold leading-6 text-gray-900">
               Anmelden <span aria-hidden="true">&rarr;</span>
             </a>
-            <Profile />
+             )}
           </div>
         </nav>
         <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -85,6 +89,9 @@ export default function Header() {
                     </a>
                   ))}
                 </div>
+                {isAuthenticated ? (
+                  <Profile setAuthStatus={setAuthStatus}/>
+                ): (
                 <div className="py-6">
                   <a
                     href="/anmelden"
@@ -93,7 +100,8 @@ export default function Header() {
                     Anmelden
                   </a>
                 </div>
-              </div>
+                )}
+                </div>
             </div>
           </Dialog.Panel>
         </Dialog>
@@ -103,3 +111,7 @@ export default function Header() {
 
 }
 
+Header.propTypes = {
+  setAuthStatus: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
+};

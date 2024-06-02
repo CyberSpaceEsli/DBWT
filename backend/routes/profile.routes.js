@@ -6,9 +6,6 @@ const profileController = require("../controllers/profile.controller");
 // localhost:3000/api/v1/schools/all METHOD: GET
 router.get("/all", profileController.all_profiles)
 
-//Get profile by id
-router.get("/id",profileController.on_id);
-
 //SignUp Profile
 router.post("/signup",profileController.signup);
 

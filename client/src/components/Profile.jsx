@@ -1,6 +1,15 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import PropTypes from 'prop-types';
 
-export default function Profile() {
+export default function Profile({ setAuthStatus }) {
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('username');
+    setAuthStatus(false);
+
+  };
+
   return (
     <div className="mr-14">
      <Menu>
@@ -16,7 +25,7 @@ export default function Profile() {
           </a>
         </MenuItem>
         <MenuItem>
-          <a className="block px-4 py-2 data-[focus]:bg-indigo-50 data-[focus]:rounded-lg" href="/support">
+          <a className="block px-4 py-2 data-[focus]:bg-indigo-50 data-[focus]:rounded-lg" href="/" onClick={handleLogout}>
             Abmelden
           </a>
         </MenuItem>
@@ -24,4 +33,8 @@ export default function Profile() {
     </Menu>
     </div>
   )
+}
+
+Profile.propTypes = {
+  setAuthStatus: PropTypes.func.isRequired
 }
