@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] =  useState('');
   const [error, setError] = useState(null);
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,6 +30,7 @@ export default function SignUp() {
           setPassword('')
           setError(null)
           console.log("new profile added", json)
+          navigate('/anmelden')
         }
     };
 
@@ -89,10 +92,10 @@ export default function SignUp() {
               </div>
               <div className="mt-2">
                 <input
-                  id="password-set"
-                  name="password-set"
-                  type="password"
-                  autoComplete="current-password"
+                  id="password-set-1"
+                  name="password-set-1"
+                  type="password-1"
+                  autoComplete="current-password-1"
                   required
                   className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
