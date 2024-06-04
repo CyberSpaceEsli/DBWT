@@ -1,4 +1,5 @@
 //Model import
+const { default: mongoose } = require("mongoose");
 const Profile = require("../models/profile.model");
 
 // @TODO CRUD Controllers
@@ -26,7 +27,7 @@ exports.signup =  (req, res) => {
   };
  
 
-// Login controller
+// Login controller profile/login
 exports.login = (req, res) => {
     const { username, password } = req.body;
 
@@ -47,14 +48,45 @@ exports.login = (req, res) => {
         .catch(err => res.status(500).json({ error: err.message }));
 };
 
-// Logout controller
+// Logout controller profile/logout
 exports.logout = (req, res) => {
     res.status(200).json({ message: 'Logged out successfully' });
 };
 
 
+// Delete controller profile/:id
+exports.delete_profile = async (req, res) => {
+    const { id } = req.params
+
+     if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such profile'})
+     }
+
+    Profile.findOneAndDelete({ _id:id })
+    .then(() => res.status(200).json({id, message: 'Profile successfully deleted'}))
+    .catch(err => res.status(500).json({ error: err.message }));
+
+};
+
+// Update controller profile/:id
+exports.update_profile = (req, res) => {
+   const { id } = req.params
+
+
+     if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such profile'})
+     }
+
+   Profile.findOneAndUpdate({ _id:id }, {
+      ...req.body
+   })
+    .then(() => res.status(200).json({id, message: 'Profile successfully updated'}))
+    .catch(err => res.status(500).json({ error: err.message }));
+
+};
+
 // Missleading endpoint handling
 exports.error = (req, res) => {
-    console.log("here")
+    console.log("This triggers me")
     res.status(404).send("Error")
   };  

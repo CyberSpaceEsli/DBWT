@@ -16,10 +16,10 @@ router.post("/login",profileController.login);
 router.post("/logout",profileController.logout);
 
 //Delete profile
-//router.delete("/",profileController.delete);
+router.delete("/:id",profileController.delete_profile);
 
 //Update profile 
-//router.update("/",profileController.update);
+router.patch("/:id",profileController.update_profile);
 
 // * Endpoint as * Method error handling
 router.get("/*",profileController.error);

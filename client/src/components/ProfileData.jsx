@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import ProfileDataDisplay from './ProfileDataDisplay.jsx'
 
 export default function ProfileData({ isAuthenticated }) {
     const [facility, setFacility] = useState('')
@@ -119,7 +120,7 @@ export default function ProfileData({ isAuthenticated }) {
           </div>
 
 
-      <div className="lg:mt-12 flex items-center lg:justify-end gap-x-6 pb-8 border-b border-slate-300">
+      <div className="lg:mt-12 flex items-center lg:justify-end gap-x-6">
         <button
           type="submit"
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -128,14 +129,7 @@ export default function ProfileData({ isAuthenticated }) {
         </button>
        </div>
 
-       <div href="#" className="mt-8 block p-6 bg-white border border-gray-200 rounded-lg shadow-md shadow-indigo-100">
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Ihre gespeicherten Daten zum Profil: {username}.</h5><br />
-          <p className="font-semibold text-gray-700 dark:text-gray-400">Die Lieblingseinrichtung:</p>
-          <p className="block text-sm font-medium leading-6 text-gray-900">...</p> <br />
-
-           <p className="font-semibold text-gray-700 dark:text-gray-400">Die Heimadresse: </p>
-          <p className="block text-sm font-medium leading-6 text-gray-900">...</p>
-        </div>
+       <ProfileDataDisplay username={username}/>
 
         </div>
       </div>
