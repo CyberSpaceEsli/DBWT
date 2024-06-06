@@ -6,6 +6,9 @@ export default function Profile({ setAuthStatus }) {
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('username');
+    localStorage.removeItem('street');
+    localStorage.removeItem('city');
+    localStorage.removeItem('plz');
     setAuthStatus(false);
 
   };

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import ProfileDataDisplay from './ProfileDataDisplay.jsx'
 
 export default function ProfileData({ isAuthenticated, profileId }) {
-    const [street, setStreet] = useState('')
-    const [city, setCity] = useState('Chemnitz')
-    const [plz, setPLZ] = useState('')
+    const [newStreet, setStreet] = useState('')
+    const [newCity, setCity] = useState('Chemnitz')
+    const [newPlz, setPLZ] = useState('')
     const [newUsername, setNewUsername] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -15,6 +15,9 @@ export default function ProfileData({ isAuthenticated, profileId }) {
   
 
     var username;
+    var street;
+    var city;
+    var plz;
 
     if(isAuthenticated) {
       username = localStorage.username;
@@ -60,6 +63,42 @@ export default function ProfileData({ isAuthenticated, profileId }) {
           setError(null)
           console.log("new password:", json.password)
           localStorage.setItem('username', json.username);
+        }
+    };
+
+     const handleSubmitAddress = async (e) => {
+      e.preventDefault();
+
+         if (newPassword !== confirmPassword) {
+            setError('Passwords do not match.');
+            return;
+        }
+
+        const res = await fetch('http://localhost:3000/api/v1/profile/' + profileId + '/homeaddress', {
+          method: 'POST',
+          body: JSON.stringify({street: newStreet, city: newCity, zip: newPlz}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+
+        const json = await res.json()
+
+
+       if(!res.ok) {
+        setError(json.error)
+        console.log("err",error);
+       }
+
+        if (res.ok) {
+          setStreet('')
+          setCity('')
+          setPLZ('')
+          setError(null)
+          localStorage.setItem('street', json.street);
+          localStorage.setItem('city', json.city);
+          localStorage.setItem('plz', json.zip);
+          console.log("street:", json.street)
         }
     };
 
@@ -202,11 +241,10 @@ export default function ProfileData({ isAuthenticated, profileId }) {
                   type="text"
                   name="city"
                   id="city"
-                  onChange={ (e) => setCity(e.target.defaultValue) }
+                  onChange={ (e) => setCity(e.target.value) }
                   autoComplete="address-level2"
                   className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  defaultValue={city}
-                  readOnly
+                  value={city}
                 />
               </div>
             </div>
@@ -233,13 +271,14 @@ export default function ProfileData({ isAuthenticated, profileId }) {
       <div className="lg:mt-12 flex items-center lg:justify-end gap-x-6">
         <button
           type="button"
+          onClick={handleSubmitAddress}
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Speichern
         </button>
        </div>
 
-       <ProfileDataDisplay username={username} isAuthenticated={isAuthenticated}/>
+       <ProfileDataDisplay username={username} profileId={profileId} isAuthenticated={isAuthenticated} street={street} plz={plz} city={city} />
 
         </div>
       </div>
