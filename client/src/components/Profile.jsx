@@ -11,10 +11,10 @@ export default function Profile({ setAuthStatus }) {
   };
 
   return (
-    <div className="mr-14">
+    <div className="lg:mr-14">
      <Menu>
       <MenuButton>
-        <div className="relative w-8 h-8 overflow-hidden bg-gray-100 rounded-full">
+        <div className="mt-14 lg:mt-0 relative w-8 h-8 overflow-hidden bg-gray-100 rounded-full">
             <svg className="absolute w-8 h-8 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
         </div>
       </MenuButton>

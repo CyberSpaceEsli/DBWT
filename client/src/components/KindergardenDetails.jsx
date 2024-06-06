@@ -3,7 +3,7 @@ import { Marker, Popup } from 'react-leaflet'
 import { Icon } from 'leaflet';
 import POIBlue from '../assets/POI_blue_400.png'
 import PropTypes from 'prop-types';
-
+import FavFacilityButton from './FavFacilityButton';
 
 export default function KindergardenDetails({ kindergarden }) {
 
@@ -21,6 +21,7 @@ export default function KindergardenDetails({ kindergarden }) {
         icon={customIcon}
         position={[kindergarden.Y, kindergarden.X]} >
         <Popup>
+            <FavFacilityButton />
             <strong>{kindergarden.BEZEICHNUNG}</strong><br />
             Tel.: {kindergarden.TELEFON},<br />
             E-Mail: {kindergarden.EMAIL}, <br />

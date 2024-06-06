@@ -3,6 +3,7 @@ import { Marker, Popup } from 'react-leaflet'
 import { Icon } from 'leaflet';
 import POIPink from '../assets/POI_pink_400.png'
 import PropTypes from 'prop-types';
+import FavFacilityButton from './FavFacilityButton';
 
 
 export default function SocialChildProjectDetails({ project }) {
@@ -21,6 +22,7 @@ export default function SocialChildProjectDetails({ project }) {
         icon={customIcon}
         position={[project.Y, project.X]} >
         <Popup>
+            <FavFacilityButton />
             <strong>{project.TRAEGER}</strong><br />
             Leistung: {project.LEISTUNGEN},<br />
             Tel.: {project.TELEFON},<br />

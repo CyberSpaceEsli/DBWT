@@ -3,6 +3,7 @@ import { Marker, Popup } from 'react-leaflet'
 import { Icon } from 'leaflet';
 import POIRed from '../assets/POI_red_400.png'
 import PropTypes from 'prop-types';
+import FavFacilityButton from './FavFacilityButton';
 
 
 export default function SchoolDetails({ school }) {
@@ -21,6 +22,7 @@ export default function SchoolDetails({ school }) {
         icon={customIcon}
         position={[school.Y, school.X]} >
         <Popup>
+           <FavFacilityButton />
             <strong>{school.BEZEICHNUNG}</strong><br />
             Art: {school.ART},<br />
             Tel.: {school.TELEFON},<br />
