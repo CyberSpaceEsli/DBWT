@@ -10,14 +10,14 @@ export default function ProfileDataDisplay({ username, isAuthenticated }) {
   return (
     <div className="mt-10 border-t border-slate-300">
        <div href="#" className="mt-8 block p-6 bg-white border border-gray-200 rounded-lg shadow-md shadow-indigo-100">
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Ihre gespeicherten Daten zum Profil: {username}.</h5><br />
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Ihre gespeicherten Daten zum Profil: {username}.</h5><br />
           
-          <p className="font-semibold text-gray-700">Lieblingseinrichtung:</p> 
+          <p className="font-semibold ">Lieblingseinrichtung:</p> 
           <p id="facility" className="mt-2 block text-sm leading-6 text-gray-900">Grundschule Blah</p>
 
         <div className="mt-4 mb-4 border-t border-slate-300"></div>
 
-        <p className="font-semibold text-gray-700 min-w-full">Heimadresse: </p>
+        <p className="font-semibold min-w-full">Heimadresse: </p>
 
         <div className="">
 

@@ -7,8 +7,24 @@ import NoPage from "./components/NoPage.jsx";
 import ProfileDataForm from "./components/ProfileDataForm.jsx";
 import PropTypes from 'prop-types';
 import './App.css'
+import { useState, useEffect } from 'react';
 
 function Router({ isAuthenticated, setAuthStatus }) {
+  const [profiles, setProfile] = useState('')
+
+  useEffect(() => {
+      const fetchProfiles = async () => {
+      const res = await fetch('http://localhost:3000/api/v1/profile/all')
+      const json = await res.json()
+
+      if(res.ok) {
+        setProfile(json)
+      }
+    }
+
+    fetchProfiles()
+   }, [])
+
 
   return (
      <BrowserRouter>
@@ -24,15 +40,17 @@ function Router({ isAuthenticated, setAuthStatus }) {
             <Route path="impressum" element={<Impressum />} />
 
              {/* LogIn */}
-             {console.log("Auth", isAuthenticated)}
             <Route path="anmelden" element={<LogIn setAuthStatus={setAuthStatus}/>} />
 
              {/* SignUp */}
             <Route path="registrieren" element={<SignUp />} />
 
              {/* Profile Data */}
-            <Route path="profil" element={<ProfileDataForm isAuthenticated={isAuthenticated} />} />
-
+             {profiles && profiles.map((profile) => (
+               <Route key={profile._id} path="profil" element={<ProfileDataForm isAuthenticated={isAuthenticated} profileId={profile._id} />} />
+             ))}
+            
+            
             {/* 404 Page */}
             <Route path="*" element={<NoPage />} />
 

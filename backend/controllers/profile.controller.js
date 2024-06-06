@@ -10,6 +10,14 @@ exports.all_profiles = (req, res) =>  {
     .catch((err)=>(res.status(500).send(err)))
 }
 
+exports.on_id_profile = (req, res) =>  {
+    const { id } = req.params
+
+    Profile.findOne({ _id:id })
+    .then((profiles)=>(res.status(200).send(profiles)))
+    .catch((err)=>(res.status(500).send(err)))
+}
+
 // Handling user signup
 exports.signup =  (req, res) => {
     Profile.findOne({ username: req.body.username })
@@ -70,20 +78,76 @@ exports.delete_profile = async (req, res) => {
 
 // Update controller profile/:id
 exports.update_profile = (req, res) => {
-   const { id } = req.params
+   const { id } = req.params;
+   const { username, password } = req.body;
 
+   if (!mongoose.Types.ObjectId.isValid(id)) {
+       return res.status(404).json({ error: 'No such profile' });
+   }
 
-     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No such profile'})
-     }
+   let update = {};
 
-   Profile.findOneAndUpdate({ _id:id }, {
-      ...req.body
-   })
-    .then(() => res.status(200).json({id, message: 'Profile successfully updated'}))
-    .catch(err => res.status(500).json({ error: err.message }));
+   // Add fields to update object if they are present in the request body
+   if (username) update.username = username;
+   if (password) update.password = password;
 
+   // Check if there's anything to update
+   if (Object.keys(update).length === 0) {
+       return res.status(400).json({ error: 'No data to update' });
+   }
+
+   // Perform the update
+   Profile.findByIdAndUpdate(id, update, { new: true })
+       .then(profile => {
+           if (!profile) return res.status(404).json({ error: 'Profile not found' });
+           res.status(200).json({ id: profile._id, username: profile.username, password: profile.password, message: 'Profile successfully updated' });
+       })
+       .catch(err => res.status(500).json({ error: err.message }));
 };
+
+//Profile Favorite Facility Endpoints
+// Get fav facility
+/* exports.get_profile_facility = (req, res) => {
+  Profile.findById(req.params.id)
+    .then(profile => {
+      if (!profile) return res.status(404).send({ message: 'Profile not found' });
+      res.status(200).send(profile.favoriteFacility);
+    })
+    .catch(err => res.status(500).send(err));
+}; */
+
+
+
+//Profile Home Address Endpoints
+// get home address
+exports.get_profile_address = (req, res) => {
+    const { id } = req.params
+
+    Profile.findOne({_id:id})
+        .select('street city zip')
+        .then((address) => res.status(200).json(address))
+        .catch(err => res.status(500).json({ error: err.message }));
+};
+
+// set home address
+exports.set_profile_address = (req, res) => {
+    const { id } = req.params
+    const { street, city, zip } = req.body
+
+    Profile.findByIdAndUpdate({ _id:id }, {street, city, zip})
+        .then(() => res.status(200).json({id, message: 'Homeaddress successfully created'}))
+        .catch(err => res.status(500).json({ error: err.message }));
+};
+
+// delete home address
+exports.delete_profile_address = (req, res) => {
+    const { id } = req.params
+
+    Profile.updateOne({ _id:id }, {$unset: { street: "", city: "", zip: "" }})
+        .then(() => res.status(200).json({id, message: 'Homeaddress successfully deleted'}))
+        .catch(err => res.status(500).json({ error: err.message }));
+};
+
 
 // Missleading endpoint handling
 exports.error = (req, res) => {
