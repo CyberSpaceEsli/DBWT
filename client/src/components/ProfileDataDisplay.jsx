@@ -7,6 +7,17 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
       const [favFacility, setFavFacility] = useState('');
 
      useEffect(() => {
+      const fetchProfileData = async () => {
+        const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}`);
+          if (res.ok) {
+            const json = await res.json();
+            return json;
+          } else {
+            console.error('Failed to fetch profile:', res.statusText);
+            return null;
+          }
+      };
+
       const getAddress = async () => {
 
         const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`);
@@ -27,21 +38,29 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
           const json = await res.json();
 
           if (!res.ok) {
-              console.error('Failed to fetch favFacility:', res.statusText);
+            console.error('Failed to fetch favFacility:', res.statusText);
           }
 
-          if (res.ok) {
-            setFavFacility(json.favFacility[0].name);
-            console.log('AAA', favFacility);
+          if (res.ok && json.favFacility && json.favFacility.length > 0) {
+            const facilityName = json.favFacility
+            .filter(facility => facility.name) // Ensure name is defined
+            .map(facility => facility.name);
+            
+            if (facilityName.length > 0) {
+              setFavFacility(facilityName[0]);
+            } else {
+              setFavFacility('');
+            }
         }
 
       }
 
+      fetchProfileData();
 
       if (profileId) {
-        //fetch(`http://localhost:3000/api/v1/profile/${profileId}`) -> if (profile.favFacility && profile.favFacility.length > 0) {}
-        getFavFacility();
-        getFavFacility();
+        if (profile.favFacility && profile.favFacility.length > 0) {
+          getFavFacility();
+        }
         getAddress();
       }
 
@@ -49,8 +68,6 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
 
     if(isAuthenticated) {
       username = localStorage.username;
-      console.log("username2", username);
-      //add put route to update address and check if its working
     }
 
 
@@ -140,7 +157,7 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
             <p id="plz" className="block text-sm leading-6 text-gray-900">{address.zip}</p>
           </div> 
          ) : (
-          <p id="address" className="mt-2 block text-sm leading-6 text-gray-900">Keine Addresse angegeben.</p>
+          <p id="address" className="mt-2 block text-sm leading-6 text-gray-900">Keine Adresse angegeben.</p>
          )}
 
         </div>

@@ -14,7 +14,6 @@ export default function Map({ profileId, showSchoolDetails, showKindergardenDeta
   const [socialChildProjects, setSocialChildProjects] = useState(null);
   const [socialTeenagerProjects, setSocialTeenagerProjects] = useState(null);
 
-
   //only triggered once on compoent load due to []
   useEffect(() => {
     // Fetch school data from the server
@@ -50,25 +49,25 @@ export default function Map({ profileId, showSchoolDetails, showKindergardenDeta
       {/*schools*/}
       {console.log("Schulen", schools)}
       {showSchoolDetails && schools && schools.map((school, index) => (
-          <SchoolDetails school={school} key={index} profileId={profileId}/>
+          <SchoolDetails school={school} key={index} profileId={profileId} />
       ))}
 
       {/*kindergarden*/}
       {console.log("Kindergarden", kindergarden)}
       {showKindergardenDetails && kindergarden && kindergarden.map((kindergarden, index) => (
-          <KindergardenDetails kindergarden={kindergarden} key={index} profileId={profileId}/>
+          <KindergardenDetails kindergarden={kindergarden} key={index} profileId={profileId} />
         ))}
 
       {/*socialChildProjects*/}
       {console.log("SocialChildProjects", socialChildProjects)}  
       {showSocialChildProjectDetails && socialChildProjects && socialChildProjects.map((project, index) => (
-          <SocialChildProjectDetails project={project} key={index} profileId={profileId}/>
+          <SocialChildProjectDetails project={project} key={index} profileId={profileId} />
         ))}
 
        {/*socialChildProjects*/}
        {console.log("SocialChildProjects", socialChildProjects)} 
        {showSocialTeenagerProjectDetails && socialTeenagerProjects && socialTeenagerProjects.map((project, index) => (
-          <SocialTeenagerProjectDetails project={project} key={index} profileId={profileId}/>
+          <SocialTeenagerProjectDetails project={project} key={index} profileId={profileId} />
         ))}
 
     </MapContainer>
