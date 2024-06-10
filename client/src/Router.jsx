@@ -19,6 +19,7 @@ function Router({ isAuthenticated, setAuthStatus }) {
 
       if(res.ok) {
         setProfile(json)
+        console.log("profile:", json)
       }
     }
 
@@ -34,7 +35,9 @@ function Router({ isAuthenticated, setAuthStatus }) {
             <Route path="/" element={<Home />} />
 
             {/* Home */}
-            <Route index element={<Home isAuthenticated={isAuthenticated}/>} />
+            {profiles && profiles.map((profile) => (
+            <Route index key={profile._id} element={<Home isAuthenticated={isAuthenticated} profileId={profile._id} profile={profile} />} />
+              ))}
 
             {/* Impressum */}
             <Route path="impressum" element={<Impressum />} />

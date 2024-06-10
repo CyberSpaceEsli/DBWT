@@ -105,16 +105,74 @@ exports.update_profile = (req, res) => {
        .catch(err => res.status(500).json({ error: err.message }));
 };
 
-//Profile Favorite Facility Endpoints
-// Get fav facility
-/* exports.get_profile_facility = (req, res) => {
-  Profile.findById(req.params.id)
+//get fav facility
+exports.get_profile_facility = (req, res) => {
+  const { id } = req.params;
+
+  Profile.findById(id)
     .then(profile => {
       if (!profile) return res.status(404).send({ message: 'Profile not found' });
-      res.status(200).send(profile.favoriteFacility);
+       const favFacility = profile.favFacility.map(facility => ({
+        name: facility.name,
+        lat: facility.lat,
+        lng: facility.lng
+      }));
+      console.log('Profile:', profile);
+      res.status(200).send({id, favFacility});
     })
     .catch(err => res.status(500).send(err));
-}; */
+}
+
+// create fav facility
+exports.set_profile_facility = (req, res) => {
+    const { id } = req.params;
+    const { name, lat, lng } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: 'No such profile' });
+    }
+
+
+    Profile.findByIdAndUpdate(id, {favFacility: { name, lat, lng }})
+    .then(profile => {
+      if (!profile) return res.status(404).json({ error: 'Profile not found' });
+      const favFacility = profile.favFacility.map(facility => ({
+        name: facility.name,
+        lat: facility.lat,
+        lng: facility.lng
+      }));
+      res.status(200).json({favFacility, message: 'FavFacility successfully created'});
+    })
+    .catch(err => res.status(500).json({ error: err.message }));
+}
+
+// update fav facility
+exports.update_profile_facility = (req, res) => {
+    const { id } = req.params;
+    const { name, lat, lng } = req.body;
+
+    Profile.findByIdAndUpdate(id, { $set: { favFacility: { name, lat, lng } } })
+    .then(profile => {
+      if (!profile) return res.status(404).json({ error: 'Profile not found' });
+      const favFacility = profile.favFacility.map(facility => ({
+        name: facility.name,
+        lat: facility.lat,
+        lng: facility.lng
+      }));
+      res.status(200).json({favFacility, message: 'FavFacility successfully updated'});
+    })
+    .catch(err => res.status(500).json({ error: err.message }));
+
+}
+
+// delete fav facility
+exports.delete_profile_facility = (req, res) => {
+    const { id } = req.params
+
+    Profile.updateOne({ _id:id }, { $unset: { favFacility: { name: '', lat: '', lng: '' } } })
+        .then(() => res.status(200).json({id, message: 'FavFacility successfully deleted'}))
+        .catch(err => res.status(500).json({ error: err.message }));
+};
 
 
 

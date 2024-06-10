@@ -8,7 +8,7 @@ import SocialTeenagerProjectDetails from './SocialTeenagerProjectDetails.jsx'
 import { MapContainer, TileLayer} from 'react-leaflet'
 import PropTypes from 'prop-types';
 
-export default function Map({ showSchoolDetails, showKindergardenDetails, showSocialChildProjectDetails, showSocialTeenagerProjectDetails }) {
+export default function Map({ profileId, profile, showSchoolDetails, showKindergardenDetails, showSocialChildProjectDetails, showSocialTeenagerProjectDetails }) {
   const [schools, setSchools] = useState(null);
   const [kindergarden, setKindergarden] = useState(null);
   const [socialChildProjects, setSocialChildProjects] = useState(null);
@@ -50,7 +50,7 @@ export default function Map({ showSchoolDetails, showKindergardenDetails, showSo
       {/*schools*/}
       {console.log("Schulen", schools)}
       {showSchoolDetails && schools && schools.map((school, index) => (
-          <SchoolDetails school={school} key={index}/>
+          <SchoolDetails school={school} key={index} profileId={profileId} profile={profile}/>
       ))}
 
       {/*kindergarden*/}
@@ -77,6 +77,8 @@ export default function Map({ showSchoolDetails, showKindergardenDetails, showSo
 }
 
 Map.propTypes = {
+  profile: PropTypes.any,
+  profileId: PropTypes.string,
   showSchoolDetails: PropTypes.bool.isRequired,
   showKindergardenDetails: PropTypes.bool.isRequired,
   showSocialChildProjectDetails: PropTypes.bool.isRequired,

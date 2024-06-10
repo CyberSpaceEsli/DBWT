@@ -1,10 +1,10 @@
 import Filter from './Filter.jsx'
 import Map from './Map.jsx'
 import { useState, useEffect } from "react"
-import ProfileDataDisplay from './ProfileDataDisplay.jsx';
+//import ProfileDataDisplay from './ProfileDataDisplay.jsx';
 import PropTypes from 'prop-types';
 
-function Home({ isAuthenticated }) {
+function Home({ profileId, profile, isAuthenticated }) {
   const [showSchoolDetails, setShowSchoolDetails] = useState(false);
   const [showKindergardenDetails, setShowKindergardenDetails] = useState(false);
   const [showSocialChildProjectDetails, setShowSocialChildProjectDetails] = useState(false);
@@ -25,21 +25,29 @@ function Home({ isAuthenticated }) {
     }
   }, [showAll]);
 
-  var username;
+  //var username;
+  //var street;
+  //var city;
+  //var plz;
 
     if(isAuthenticated) {
-      username = localStorage.username;
-      console.log("username", username);
+      //username = localStorage.username;
+      //street = localStorage.street;
+      //city = localStorage.city;
+      //plz = localStorage.zip;
     }
 
   return (
     <div className="my-20 md:my-32">
       <Filter setShowSchoolDetails={setShowSchoolDetails} setShowKindergardenDetails={setShowKindergardenDetails} setShowSocialChildProjectDetails={setShowSocialChildProjectDetails} setShowSocialTeenagerProjectDetails={setShowSocialTeenagerProjectDetails} setShowAll={setShowAll}/>
-      <Map showSchoolDetails={showSchoolDetails} showKindergardenDetails={showKindergardenDetails} showSocialChildProjectDetails={showSocialChildProjectDetails} showSocialTeenagerProjectDetails={showSocialTeenagerProjectDetails}/>
+      <Map showSchoolDetails={showSchoolDetails} showKindergardenDetails={showKindergardenDetails} showSocialChildProjectDetails={showSocialChildProjectDetails} showSocialTeenagerProjectDetails={showSocialTeenagerProjectDetails} profileId={profileId} profile={profile}/>
       
-      <div className="my-5 lg:container md:mx-auto p-6 lg:p-0">
-        <ProfileDataDisplay username={username} isAuthenticated={isAuthenticated} />
+      {/* 
+        <div className="my-5 lg:container md:mx-auto p-6 lg:p-0">
+        <ProfileDataDisplay username={username} isAuthenticated={isAuthenticated} street={street} city={city} plz={plz} />
       </div>
+      */}
+
      </div>
   )
 }
@@ -47,5 +55,7 @@ function Home({ isAuthenticated }) {
 export default Home
 
 Home.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired
+  profile: PropTypes.any,
+  profileId: PropTypes.string, 
+  isAuthenticated: PropTypes.bool
 };

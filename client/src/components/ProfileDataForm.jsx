@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import ProfileDataDisplay from './ProfileDataDisplay.jsx'
 
 export default function ProfileData({ isAuthenticated, profileId }) {
-    const [newStreet, setStreet] = useState('')
-    const [newCity, setCity] = useState('Chemnitz')
-    const [newPlz, setPLZ] = useState('')
+    const [street, setStreet] = useState('')
+    const [city, setCity] = useState('')
+    const [plz, setPLZ] = useState('')
     const [newUsername, setNewUsername] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -15,9 +15,6 @@ export default function ProfileData({ isAuthenticated, profileId }) {
   
 
     var username;
-    var street;
-    var city;
-    var plz;
 
     if(isAuthenticated) {
       username = localStorage.username;
@@ -40,7 +37,7 @@ export default function ProfileData({ isAuthenticated, profileId }) {
             return;
         }
 
-        const res = await fetch('http://localhost:3000/api/v1/profile/' + profileId, {
+        const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}`, {
           method: 'PUT',
           body: JSON.stringify({username: newUsername, password: newPassword}),
           headers: {
@@ -69,14 +66,9 @@ export default function ProfileData({ isAuthenticated, profileId }) {
      const handleSubmitAddress = async (e) => {
       e.preventDefault();
 
-         if (newPassword !== confirmPassword) {
-            setError('Passwords do not match.');
-            return;
-        }
-
-        const res = await fetch('http://localhost:3000/api/v1/profile/' + profileId + '/homeaddress', {
+        const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`, {
           method: 'POST',
-          body: JSON.stringify({street: newStreet, city: newCity, zip: newPlz}),
+          body: JSON.stringify({street: street, city: city, zip: plz}),
           headers: {
             'Content-Type': 'application/json'
           }
@@ -98,7 +90,7 @@ export default function ProfileData({ isAuthenticated, profileId }) {
           localStorage.setItem('street', json.street);
           localStorage.setItem('city', json.city);
           localStorage.setItem('plz', json.zip);
-          console.log("street:", json.street)
+          console.log("street22:", json.street)
         }
     };
 
@@ -278,7 +270,7 @@ export default function ProfileData({ isAuthenticated, profileId }) {
         </button>
        </div>
 
-       <ProfileDataDisplay username={username} profileId={profileId} isAuthenticated={isAuthenticated} street={street} plz={plz} city={city} />
+       <ProfileDataDisplay username={username} profileId={profileId} isAuthenticated={isAuthenticated} />
 
         </div>
       </div>

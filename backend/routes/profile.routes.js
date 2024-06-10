@@ -24,17 +24,16 @@ router.delete("/:id",profileController.delete_profile);
 router.put("/:id",profileController.update_profile);
 
 //Get profile fav facility
-//router.get("/:id/facility",profileController.get_profile_facility);
+router.get("/:id/favfacility",profileController.get_profile_facility);
 
 //Set profile fav facility
-//router.post("/:id/facility",profileController.set_profile_facility);
+router.post("/:id/favfacility",profileController.set_profile_facility);
 
 //Update profile fav facility
-//router.put("/:id/facility/:facId",profileController.update_profile_facility);
+router.put("/:id/favfacility",profileController.update_profile_facility);
 
 //Delete profile fav facility
-//router.delete("/:id/facility/:facId",profileController.delete_profile_facility);
-
+router.delete("/:id/favfacility",profileController.delete_profile_facility);
 
 //Get profile adress
 router.get("/:id/homeaddress",profileController.get_profile_address);
