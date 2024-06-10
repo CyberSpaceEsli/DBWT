@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import FavFacilityDisplayName from './FavFacilityDisplayName';
 
 export default function ProfileDataDisplay({ profileId, username, isAuthenticated }) { 
       const [address, setAddress] = useState({ street: '', city: '', zip: '' });
+      const [favFacility, setFavFacility] = useState('');
 
      useEffect(() => {
-      const handleAddress = async () => {
+      const getAddress = async () => {
 
         const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`);
 
@@ -18,9 +20,30 @@ export default function ProfileDataDisplay({ profileId, username, isAuthenticate
         }
       };
 
-      handleAddress();
+      const getFavFacility = async () => {
 
-      }, [profileId]);
+          const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/favfacility`)
+
+          const json = await res.json();
+
+          if (!res.ok) {
+              console.error('Failed to fetch favFacility:', res.statusText);
+          }
+
+          if (res.ok) {
+            setFavFacility(json.favFacility[0].name);
+            console.log('AAA', favFacility);
+        }
+
+      }
+
+      if (profileId) {
+        //fetch(`http://localhost:3000/api/v1/profile/${profileId}`) -> if (profile.favFacility && profile.favFacility.length > 0) {}
+        getFavFacility();
+        getAddress();
+      }
+
+      }, [profileId, favFacility]);
 
     if(isAuthenticated) {
       username = localStorage.username;
@@ -52,7 +75,25 @@ export default function ProfileDataDisplay({ profileId, username, isAuthenticate
 
   }
 
+   const handleDeleteFavFacility = async (e) => {
+      e.preventDefault();
 
+          const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/favfacility`, {
+            method: 'DELETE'
+          })
+        
+          const json = await res.json()
+
+          if (!res.ok) {
+              console.error('Failed to fetch favFacility:', res.statusText);
+          }
+
+          if (res.ok) {
+            setFavFacility('');
+            console.log('successfully deleted favFacility', json);
+          }
+
+      }
 
   return (
     <div className="mt-10 border-t border-slate-300">
@@ -62,7 +103,7 @@ export default function ProfileDataDisplay({ profileId, username, isAuthenticate
           <div className="mt-2 grid gap-16 grid-cols-2 items-center">
           <p className="font-semibold ">Lieblingseinrichtung:</p> 
           <div className="flex justify-end">
-                  <button className="flex items-center cursor-pointer w-6 h-6 rounded-full bg-indigo-600 justify-center" title="Löschen">
+                  <button onClick={handleDeleteFavFacility} className="flex items-center cursor-pointer w-6 h-6 rounded-full bg-indigo-600 justify-center" title="Löschen">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className=" text-white h-3.5 w-3.5 hover:pointer-cursor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                     </svg>
@@ -70,8 +111,12 @@ export default function ProfileDataDisplay({ profileId, username, isAuthenticate
             </div>
           </div>
 
-
-          <p id="facility" className="mt-2 block text-sm leading-6 text-gray-900">Grundschule Blah</p>
+          {setFavFacility ? (
+          <FavFacilityDisplayName facilityName={favFacility} />
+          ): (
+            <p id="facility" className="mt-2 block text-sm leading-6 text-gray-900">Noch keine Lieblingseinrichtung ausgewählt</p>
+          )}
+          {console.log("BBB:", favFacility)}
 
         <div className="mt-4 mb-4 border-t border-slate-300"></div>
 

@@ -1,22 +1,21 @@
 import PropTypes from 'prop-types';
+import { useState } from "react"
+import FavFacilityDisplayName from './FavFacilityDisplayName';
 
-export default function FavFacilityButton({ profileId, profile, facilityName, lat, lng }) {
-  console.log("prooooofil:", profileId)
-
-  var favFacilityName;
-  var favFacilityLat;
-  var favFacilityLng;
-
+export default function FavFacilityButton({ profileId, facilityName, lat, lng }) {
+  const [favFacility, setFavFacility] = useState({ name: facilityName, lat: lat, lng: lng });
 
   function handleSubmitFavFacility() {
-console.log("Profile", profile)
-
-     // Check if favFacility is present //@TODO further progress find out why favFacility in has length 0
-    if (profile.favFacility.length > 0) {
-        updateFavFacility();
-    } else {
-        createFavFacility();
-    }
+  // Check if favFacility is present //@TODO further progress find out why favFacility in has length 0
+     fetch(`http://localhost:3000/api/v1/profile/${profileId}`)
+      .then(res => res.json())
+      .then(profile => {
+        if (profile.favFacility && profile.favFacility.length > 0) {
+          updateFavFacility();
+        } else {
+          createFavFacility();
+        }
+     });
 }
 
   const createFavFacility = async () => {
@@ -34,15 +33,16 @@ console.log("Profile", profile)
 
     if (!res.ok) {
         console.error('Failed to fetch address:', res.statusText);
+        setFavFacility(favFacility.name = '')
+        setFavFacility(favFacility.lat = 0)
+        setFavFacility(favFacility.lng = 0)
     }
 
     if (res.ok) {
-        favFacilityName = facilityName
-        favFacilityLat = lat
-        favFacilityLng = lng
-        console.log("favLatCreate",  favFacilityName)
-        console.log("favLngCreate", favFacilityLat)
-        console.log("favNameCreate", favFacilityLng)
+        setFavFacility({ facilityName, lat, lng })
+        console.log("favLatCreate",  favFacility.name)
+        console.log("favLngCreate", favFacility.lat)
+        console.log("favNameCreate", favFacility.lng)
 
         console.log('successfully created fav facility', json)
     }
@@ -64,30 +64,32 @@ console.log("Profile", profile)
 
     if (!res.ok) {
         console.error('Failed to fetch address:', res.statusText);
+        setFavFacility(favFacility.name = '')
+        setFavFacility(favFacility.lat = 0)
+        setFavFacility(favFacility.lng = 0)
     }
 
     if (res.ok) {
-        favFacilityName = facilityName
-        favFacilityLat = lat
-        favFacilityLng = lng
-        console.log("favLatNew",  favFacilityName)
-        console.log("favLngNew", favFacilityLat)
-        console.log("favNameNew", favFacilityLng)
+        setFavFacility({ facilityName, lat, lng })
+        console.log("favLatCreate",  favFacility.name)
+        console.log("favLngCreate", favFacility.lat)
+        console.log("favNameCreate", favFacility.lng)
 
         console.log('successfully updated fav facility', json)
     }
    }
-  
 
   return (
     <div>
         <button onClick={handleSubmitFavFacility} type="button" label="Fav_Facility" title="Favourite Facility" className="h-8 w-48 px-1.5 rounded bg-indigo-600 text-white mb-3 hover:bg-indigo-500">Favorite Einrichtung speichern</button><br />
-     </div>
+        <div className="hidden">
+        <FavFacilityDisplayName facilityName={facilityName} />
+        </div>
+    </div>
   )
 }
 
 FavFacilityButton.propTypes = {
-  profile: PropTypes.any,
   profileId: PropTypes.string,
   facilityName: PropTypes.string,
   lat: PropTypes.number,

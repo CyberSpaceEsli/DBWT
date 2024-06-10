@@ -5,7 +5,7 @@ import POIBlue from '../assets/POI_blue_400.png'
 import PropTypes from 'prop-types';
 import FavFacilityButton from './FavFacilityButton';
 
-export default function KindergardenDetails({ kindergarden }) {
+export default function KindergardenDetails({ profileId, kindergarden }) {
 
   //customIcon for schools
   const customIcon = new Icon({
@@ -15,13 +15,16 @@ export default function KindergardenDetails({ kindergarden }) {
     popupAnchor: [3, -23]
   })
 
- 
+  var kindergardenName = kindergarden.BEZEICHNUNG
+  var lng = kindergarden.Y
+  var lat = kindergarden.X
+
   return (
         <Marker
         icon={customIcon}
         position={[kindergarden.Y, kindergarden.X]} >
         <Popup>
-            <FavFacilityButton />
+            <FavFacilityButton facilityName={kindergardenName} lat={lat} lng={lng} profileId={profileId}/>
             <strong>{kindergarden.BEZEICHNUNG}</strong><br />
             Tel.: {kindergarden.TELEFON},<br />
             E-Mail: {kindergarden.EMAIL}, <br />
@@ -34,5 +37,6 @@ export default function KindergardenDetails({ kindergarden }) {
 }
 
 KindergardenDetails.propTypes = {
+  profileId: PropTypes.string,
   kindergarden: PropTypes.any.isRequired
 }

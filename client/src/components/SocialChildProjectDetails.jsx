@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import FavFacilityButton from './FavFacilityButton';
 
 
-export default function SocialChildProjectDetails({ project }) {
+export default function SocialChildProjectDetails({ profileId, project }) {
 
   //customIcon for socialChildProject
   const customIcon = new Icon({
@@ -16,13 +16,16 @@ export default function SocialChildProjectDetails({ project }) {
     popupAnchor: [3, -23]
   })
 
+  var projectName = project.TRAEGER
+  var lng = project.Y
+  var lat = project.X
  
   return (
         <Marker
         icon={customIcon}
         position={[project.Y, project.X]} >
         <Popup>
-            <FavFacilityButton />
+            <FavFacilityButton facilityName={projectName} lat={lat} lng={lng} profileId={profileId}/>
             <strong>{project.TRAEGER}</strong><br />
             Leistung: {project.LEISTUNGEN},<br />
             Tel.: {project.TELEFON},<br />
@@ -35,5 +38,6 @@ export default function SocialChildProjectDetails({ project }) {
 }
 
 SocialChildProjectDetails.propTypes = {
+  profileId: PropTypes.string,
   project: PropTypes.any.isRequired
 }

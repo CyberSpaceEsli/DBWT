@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 //import ProfileDataDisplay from './ProfileDataDisplay.jsx';
 import PropTypes from 'prop-types';
 
-function Home({ profileId, profile, isAuthenticated }) {
+function Home({ profileId, isAuthenticated }) {
   const [showSchoolDetails, setShowSchoolDetails] = useState(false);
   const [showKindergardenDetails, setShowKindergardenDetails] = useState(false);
   const [showSocialChildProjectDetails, setShowSocialChildProjectDetails] = useState(false);
@@ -40,7 +40,7 @@ function Home({ profileId, profile, isAuthenticated }) {
   return (
     <div className="my-20 md:my-32">
       <Filter setShowSchoolDetails={setShowSchoolDetails} setShowKindergardenDetails={setShowKindergardenDetails} setShowSocialChildProjectDetails={setShowSocialChildProjectDetails} setShowSocialTeenagerProjectDetails={setShowSocialTeenagerProjectDetails} setShowAll={setShowAll}/>
-      <Map showSchoolDetails={showSchoolDetails} showKindergardenDetails={showKindergardenDetails} showSocialChildProjectDetails={showSocialChildProjectDetails} showSocialTeenagerProjectDetails={showSocialTeenagerProjectDetails} profileId={profileId} profile={profile}/>
+      <Map showSchoolDetails={showSchoolDetails} showKindergardenDetails={showKindergardenDetails} showSocialChildProjectDetails={showSocialChildProjectDetails} showSocialTeenagerProjectDetails={showSocialTeenagerProjectDetails} profileId={profileId}/>
       
       {/* 
         <div className="my-5 lg:container md:mx-auto p-6 lg:p-0">
@@ -55,7 +55,6 @@ function Home({ profileId, profile, isAuthenticated }) {
 export default Home
 
 Home.propTypes = {
-  profile: PropTypes.any,
   profileId: PropTypes.string, 
   isAuthenticated: PropTypes.bool
 };

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import FavFacilityButton from './FavFacilityButton';
 
 
-export default function SchoolDetails({ profileId, profile, school }) {
+export default function SchoolDetails({ profileId, school }) {
 
   //customIcon for schools
   const customIcon = new Icon({
@@ -25,7 +25,7 @@ export default function SchoolDetails({ profileId, profile, school }) {
         icon={customIcon}
         position={[school.Y, school.X]} >
         <Popup>
-           <FavFacilityButton facilityName={schoolName} lat={lat} lng={lng} profileId={profileId} profile={profile}/>
+           <FavFacilityButton facilityName={schoolName} lat={lat} lng={lng} profileId={profileId}/>
             <strong>{school.BEZEICHNUNG}</strong><br />
             Art: {school.ART},<br />
             Tel.: {school.TELEFON},<br />
@@ -39,7 +39,6 @@ export default function SchoolDetails({ profileId, profile, school }) {
 }
 
 SchoolDetails.propTypes = {
-  profile: PropTypes.any,
   profileId: PropTypes.string,
   school: PropTypes.any.isRequired
 }

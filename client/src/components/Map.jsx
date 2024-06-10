@@ -8,7 +8,7 @@ import SocialTeenagerProjectDetails from './SocialTeenagerProjectDetails.jsx'
 import { MapContainer, TileLayer} from 'react-leaflet'
 import PropTypes from 'prop-types';
 
-export default function Map({ profileId, profile, showSchoolDetails, showKindergardenDetails, showSocialChildProjectDetails, showSocialTeenagerProjectDetails }) {
+export default function Map({ profileId, showSchoolDetails, showKindergardenDetails, showSocialChildProjectDetails, showSocialTeenagerProjectDetails }) {
   const [schools, setSchools] = useState(null);
   const [kindergarden, setKindergarden] = useState(null);
   const [socialChildProjects, setSocialChildProjects] = useState(null);
@@ -50,25 +50,25 @@ export default function Map({ profileId, profile, showSchoolDetails, showKinderg
       {/*schools*/}
       {console.log("Schulen", schools)}
       {showSchoolDetails && schools && schools.map((school, index) => (
-          <SchoolDetails school={school} key={index} profileId={profileId} profile={profile}/>
+          <SchoolDetails school={school} key={index} profileId={profileId}/>
       ))}
 
       {/*kindergarden*/}
       {console.log("Kindergarden", kindergarden)}
       {showKindergardenDetails && kindergarden && kindergarden.map((kindergarden, index) => (
-          <KindergardenDetails kindergarden={kindergarden} key={index}/>
+          <KindergardenDetails kindergarden={kindergarden} key={index} profileId={profileId}/>
         ))}
 
       {/*socialChildProjects*/}
       {console.log("SocialChildProjects", socialChildProjects)}  
       {showSocialChildProjectDetails && socialChildProjects && socialChildProjects.map((project, index) => (
-          <SocialChildProjectDetails project={project} key={index}/>
+          <SocialChildProjectDetails project={project} key={index} profileId={profileId}/>
         ))}
 
        {/*socialChildProjects*/}
        {console.log("SocialChildProjects", socialChildProjects)} 
        {showSocialTeenagerProjectDetails && socialTeenagerProjects && socialTeenagerProjects.map((project, index) => (
-          <SocialTeenagerProjectDetails project={project} key={index}/>
+          <SocialTeenagerProjectDetails project={project} key={index} profileId={profileId}/>
         ))}
 
     </MapContainer>
@@ -77,7 +77,6 @@ export default function Map({ profileId, profile, showSchoolDetails, showKinderg
 }
 
 Map.propTypes = {
-  profile: PropTypes.any,
   profileId: PropTypes.string,
   showSchoolDetails: PropTypes.bool.isRequired,
   showKindergardenDetails: PropTypes.bool.isRequired,
