@@ -197,6 +197,19 @@ exports.set_profile_address = (req, res) => {
         .catch(err => res.status(500).json({ error: err.message }));
 };
 
+// update home address
+exports.update_profile_address = (req, res) => {
+    const { id } = req.params;
+    const { street, city, zip } = req.body;
+
+    Profile.findByIdAndUpdate(id, { $set: { street, city, zip } })
+    .then(profile => {
+      if (!profile) return res.status(404).json({ error: 'Profile not found' });
+      res.status(200).json({street, city, zip, message: 'Homeaddress successfully updated'});
+    })
+    .catch(err => res.status(500).json({ error: err.message }));
+}
+
 // delete home address
 exports.delete_profile_address = (req, res) => {
     const { id } = req.params

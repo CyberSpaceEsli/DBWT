@@ -42,7 +42,7 @@ router.get("/:id/homeaddress",profileController.get_profile_address);
 router.post("/:id/homeaddress",profileController.set_profile_address);
 
 //Update profile adress
-//router.put("/:id/homeaddress/:homeaddId",profileController.update_profile_address);
+router.put("/:id/homeaddress/",profileController.update_profile_address);
 
 //Delete profile adress
 router.delete("/:id/homeaddress",profileController.delete_profile_address);

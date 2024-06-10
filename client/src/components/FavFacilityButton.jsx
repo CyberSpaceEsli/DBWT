@@ -5,7 +5,9 @@ import FavFacilityDisplayName from './FavFacilityDisplayName';
 export default function FavFacilityButton({ profileId, facilityName, lat, lng }) {
   const [favFacility, setFavFacility] = useState({ name: facilityName, lat: lat, lng: lng });
 
-  function handleSubmitFavFacility() {
+  function handleSubmitFavFacility(e) {
+    e.preventDefault();
+
   // Check if favFacility is present //@TODO further progress find out why favFacility in has length 0
      fetch(`http://localhost:3000/api/v1/profile/${profileId}`)
       .then(res => res.json())

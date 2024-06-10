@@ -50,7 +50,7 @@ function Router({ isAuthenticated, setAuthStatus }) {
 
              {/* Profile Data */}
              {profiles && profiles.map((profile) => (
-               <Route key={profile._id} path="profil" element={<ProfileDataForm isAuthenticated={isAuthenticated} profileId={profile._id} />} />
+               <Route key={profile._id} path="profil" element={<ProfileDataForm isAuthenticated={isAuthenticated} profileId={profile._id} profile={profile} />} />
              ))}
             
             

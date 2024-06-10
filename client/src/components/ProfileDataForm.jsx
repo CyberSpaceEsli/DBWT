@@ -2,10 +2,11 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ProfileDataDisplay from './ProfileDataDisplay.jsx'
 
-export default function ProfileData({ isAuthenticated, profileId }) {
+export default function ProfileData({ isAuthenticated, profile, profileId }) {
     const [street, setStreet] = useState('')
     const [city, setCity] = useState('')
     const [plz, setPLZ] = useState('')
+    const [address, setAddress] = useState({ street: street, city: city, zip: plz })
     const [newUsername, setNewUsername] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -28,6 +29,23 @@ export default function ProfileData({ isAuthenticated, profileId }) {
      const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
+
+    function handleSubmitHomeaddress(e) {
+
+    e.preventDefault();
+
+    fetch(`http://localhost:3000/api/v1/profile/${profileId}`)
+      .then(res => res.json())
+      .then(profile => {
+        if (profile.street && profile.city && profile.zip ) {
+          updateHomeaddress();
+          console.log("PUT");
+        } else {
+          createHomeaddress();
+          console.log("POST");
+        }
+      });
+    }
 
     const handleSubmitProfile = async (e) => {
       e.preventDefault();
@@ -63,8 +81,7 @@ export default function ProfileData({ isAuthenticated, profileId }) {
         }
     };
 
-     const handleSubmitAddress = async (e) => {
-      e.preventDefault();
+     const createHomeaddress = async () => {
 
         const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`, {
           method: 'POST',
@@ -80,17 +97,47 @@ export default function ProfileData({ isAuthenticated, profileId }) {
        if(!res.ok) {
         setError(json.error)
         console.log("err",error);
+        setAddress(address.street='');
+        setAddress(address.city='');
+        setAddress(address.plz= 0)
        }
 
         if (res.ok) {
-          setStreet('')
-          setCity('')
-          setPLZ('')
+          setAddress({ street, city, plz });
+          setError(null);
+          localStorage.setItem('street', address.street);
+          localStorage.setItem('city', address.city);
+          localStorage.setItem('plz', address.zip);
+        }
+    };
+
+    const updateHomeaddress = async () => {
+
+        const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`, {
+          method: 'PUT',
+          body: JSON.stringify({street: street, city: city, zip: plz}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+
+        const json = await res.json()
+
+
+       if(!res.ok) {
+        setError(json.error)
+        console.log("err",error);
+        setAddress(address.street='');
+        setAddress(address.city='');
+        setAddress(address.plz= 0)
+       }
+
+        if (res.ok) {
+          setAddress({ street, city, plz });
           setError(null)
-          localStorage.setItem('street', json.street);
-          localStorage.setItem('city', json.city);
-          localStorage.setItem('plz', json.zip);
-          console.log("street22:", json.street)
+          localStorage.setItem('street', address.street);
+          localStorage.setItem('city', address.city);
+          localStorage.setItem('plz', address.zip);
         }
     };
 
@@ -263,14 +310,14 @@ export default function ProfileData({ isAuthenticated, profileId }) {
       <div className="lg:mt-12 flex items-center lg:justify-end gap-x-6">
         <button
           type="button"
-          onClick={handleSubmitAddress}
+          onClick={handleSubmitHomeaddress}
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Speichern
         </button>
        </div>
 
-       <ProfileDataDisplay username={username} profileId={profileId} isAuthenticated={isAuthenticated} />
+       <ProfileDataDisplay username={username} profileId={profileId} isAuthenticated={isAuthenticated} profile={profile} />
 
         </div>
       </div>
@@ -281,5 +328,6 @@ export default function ProfileData({ isAuthenticated, profileId }) {
 
 ProfileData.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  profileId: PropTypes.string.isRequired
+  profileId: PropTypes.string.isRequired,
+  profile: PropTypes.any
 };
