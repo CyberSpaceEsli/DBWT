@@ -6,6 +6,7 @@ import POIBlue from '../assets/POI_blue_400.png'
 import FavFacility from '../assets/POI_fav_facility.png'
 import PropTypes from 'prop-types';
 import FavFacilityButton from './FavFacilityButton';
+import FacilityDetailsButton from './FacilityDetailsButton';
 
 export default function KindergardenDetails({ profileId, kindergarden }) {
   const [favFacility, setFavFacility] = useState(null);
@@ -58,7 +59,8 @@ export default function KindergardenDetails({ profileId, kindergarden }) {
             Straße: {kindergarden.STRASSE} {kindergarden.HAUSBEZ} ,<br />
             Plz: {kindergarden.PLZ},
             Ort: {kindergarden.ORT}, <br />
-            Koordinaten: [{kindergarden.Y}, {kindergarden.X}]
+            Koordinaten: [{kindergarden.Y}, {kindergarden.X}] <br />
+            <FacilityDetailsButton lat={lat} lng={lng}/>
         </Popup>
         </Marker>
   );

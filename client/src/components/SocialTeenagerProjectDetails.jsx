@@ -6,6 +6,7 @@ import POIPurple from '../assets/POI_purple_400.png'
 import FavFacility from '../assets/POI_fav_facility.png'
 import PropTypes from 'prop-types';
 import FavFacilityButton from './FavFacilityButton';
+import FacilityDetailsButton from './FacilityDetailsButton';
 
 
 export default function SocialTeenagerProjectDetails({ profileId, project }) {
@@ -59,7 +60,8 @@ export default function SocialTeenagerProjectDetails({ profileId, project }) {
             Straße: {project.STRASSE},<br />
             Plz: {project.PLZ},
             Ort: {project.ORT} <br />
-            Koordinaten: [{project.Y}, {project.X}]
+            Koordinaten: [{project.Y}, {project.X}]<br />
+            <FacilityDetailsButton lat={lat} lng={lng}/>
         </Popup>
         </Marker>
   );
