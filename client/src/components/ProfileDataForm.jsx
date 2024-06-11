@@ -147,13 +147,13 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
       <div className="flex justify-center lg:pr-8">
         <div className="max-w-2xl">
 
-          <h2 className="text-sm font-semibold leading-7 text-indigo-600">Persönliche Daten</h2>
+          <h2 className="text-sm font-semibold leading-7 text-red-400">Persönliche Daten</h2>
           <p className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nehmen Sie weitere Einstellungen an Ihrem Profil vor.</p>
 
           <div className="my-8">
 
             <div className="sm:col-span-4 mb-12">
-              <p className="block text-xl font-medium leading-6 text-gray-900">
+              <p className="block text-2xl leading-6 text-gray-900 font-semibold">
                 Aktuell angemeldet als Nutzer <span className="font-semibold text-red-400">{username}</span>.
               </p>
             </div>
@@ -174,12 +174,12 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
                       onChange={ (e) => setNewUsername(e.target.value) }
                       value={newUsername}
                       autoComplete="new-username"
-                      className="xl:col-span-2 block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="xl:col-span-2 block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                     />
                     <button
                         type="button"
                         onClick={handleSubmitProfile}
-                        className="mt-4 xl:mt-0 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="mt-4 xl:mt-0 rounded-md bg-green-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                         >
                         Speichern
                     </button>
@@ -187,7 +187,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
               </div>
             </div>
 
-            <button type="button" onClick={togglePasswordChange} className="mt-4 w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Passwort ändern</button>
+            <button type="button" onClick={togglePasswordChange} className="mt-4 w-full rounded-md bg-green-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Passwort ändern</button>
 
           {passwordChange && (
            <div className="sm:col-span-2 sm:col-start-1">
@@ -202,7 +202,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
                 onChange={ (e) => setNewPassword(e.target.value) }
                 value={newPassword}
                 autoComplete="password-user"
-                className="w-full xl:w-96 block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="w-full xl:w-96 block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
               />
 
 
@@ -220,12 +220,12 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         id="password-user-check"
                         autoComplete="password-user-check"
-                        className="xl:col-span-2 w-full block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="xl:col-span-2 w-full block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                       />
                     <button
                       type="button"
                       onClick={handleSubmitProfile}
-                      className="mt-4 xl:mt-0 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="mt-4 xl:mt-0 rounded-md bg-green-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                       >
                       Speichern
                       </button>
@@ -266,7 +266,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
                   onChange={ (e) => setStreet(e.target.value) }
                   value={street}
                   autoComplete="street-address"
-                  className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -282,7 +282,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
                   id="city"
                   onChange={ (e) => setCity(e.target.value) }
                   autoComplete="address-level2"
-                  className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                   value={city}
                 />
               </div>
@@ -300,7 +300,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
                   onChange={ (e) => setPLZ(e.target.value) }
                   value={plz}
                   autoComplete="postal-code"
-                  className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -311,7 +311,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
         <button
           type="button"
           onClick={handleSubmitHomeaddress}
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="rounded-md bg-green-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Speichern
         </button>

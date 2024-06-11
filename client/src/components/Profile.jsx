@@ -23,12 +23,12 @@ export default function Profile({ setAuthStatus }) {
       </MenuButton>
       <MenuItems className="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 py-1.5 mt-1.5 px-1.5 text-sm font-semibold" anchor="bottom">
         <MenuItem>
-          <a className="block px-4 py-2 dark:hover:text-white data-[focus]:bg-indigo-50 data-[focus]:rounded-lg" href="/profil">
+          <a className="block px-4 py-2 dark:hover:text-white data-[focus]:bg-green-50 data-[focus]:rounded-lg" href="/profil">
             Persönliche Daten
           </a>
         </MenuItem>
         <MenuItem>
-          <a className="block px-4 py-2 data-[focus]:bg-indigo-50 data-[focus]:rounded-lg" href="/" onClick={handleLogout}>
+          <a className="block px-4 py-2 data-[focus]:bg-green-50 data-[focus]:rounded-lg" href="/" onClick={handleLogout}>
             Abmelden
           </a>
         </MenuItem>

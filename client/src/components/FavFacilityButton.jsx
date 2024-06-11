@@ -83,7 +83,7 @@ export default function FavFacilityButton({ profileId, facilityName, lat, lng })
 
   return (
     <div>
-        <button onClick={handleSubmitFavFacility} type="button" label="Fav_Facility" title="Favourite Facility" className="h-8 w-48 px-1.5 rounded bg-indigo-600 text-white mb-3 hover:bg-indigo-500">Favorite Einrichtung speichern</button><br />
+        <button onClick={handleSubmitFavFacility} type="button" label="Fav_Facility" title="Favourite Facility" className="h-8 w-48 px-1.5 rounded bg-green-400 text-white mb-3 hover:bg-green-500">Favorite Einrichtung speichern</button><br />
         <div className="hidden">
         <FavFacilityDisplayName facilityName={facilityName} />
         </div>

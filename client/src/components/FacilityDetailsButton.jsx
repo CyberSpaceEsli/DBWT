@@ -56,7 +56,7 @@ export default function FacilityDetailsButton({ lat , lng }) {
   return (
         <div>
             <br />
-            <button onClick={() => getFacilityDetails(lat, lng)} className="underline text-indigo-600 text-md">POI Informationen</button>
+            <button onClick={() => getFacilityDetails(lat, lng)} className="underline text-green-600 hover:text-green-700 text-md">POI Informationen</button>
              <br />
              {facilityDetails && toggleFacilityDetails &&(
                 <div>              

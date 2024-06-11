@@ -26,7 +26,7 @@ export default function Impressum() {
     
           <div className="flex justify-center lg:pr-8 lg:pt-4">
             <div className="lg:max-w-2xl">
-              <h2 className="text-base font-semibold leading-7 text-indigo-600">Alles Wichtige</h2>
+              <h2 className="text-base font-semibold leading-7 text-red-400">Alles Wichtige</h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Impressum</p>
               <p className="mt-6 text-lg leading-8 text-gray-600">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
@@ -36,7 +36,7 @@ export default function Impressum() {
                 {features.map((feature) => (
                   <div key={feature.name} className="relative pl-9">
                     <dt className="inline font-semibold text-gray-900">
-                      <feature.icon className="absolute left-1 top-1 h-5 w-5 text-indigo-600" aria-hidden="true" />
+                      <feature.icon className="absolute left-1 top-1 h-5 w-5 text-red-400" aria-hidden="true" />
                       {feature.name}
                     </dt>{' '}
                     <dd className="inline">{feature.description}</dd>
