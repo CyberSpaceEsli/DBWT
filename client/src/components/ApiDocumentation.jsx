@@ -6,7 +6,7 @@ export default function ApiDocumentation() {
      /*useEffect(() => {
         async function fetchSwaggerJson() {
             try {
-                const response = await fetch('http://localhost:3000/api-doku', {
+                const response = await fetch('http://localhost:3000/apidoku', {
                     headers: {
                         'Access-Control-Allow-Origin': 'http://localhost:3000'
                     }
