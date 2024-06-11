@@ -6,6 +6,7 @@ import POIRed from '../assets/POI_red_400.png'
 import FavFacility from '../assets/POI_fav_facility.png'
 import PropTypes from 'prop-types';
 import FavFacilityButton from './FavFacilityButton';
+import FacilityDetailsButton from './FacilityDetailsButton';
 
 
 export default function SchoolDetails({ profileId, school }) {
@@ -21,7 +22,9 @@ export default function SchoolDetails({ profileId, school }) {
       setFavFacility(fetchedFavFacility);
     };
     getFavFacility();
-  }, [profileId, favFacility]);
+
+
+  }, [profileId, favFacility, school.Y, school.X]);
 
   const fetchProfileData = async (profileId) => {
     const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}`);
@@ -32,7 +35,7 @@ export default function SchoolDetails({ profileId, school }) {
         console.error('Failed to fetch profile:', res.statusText);
         return null;
       }
-};
+  };
 
   const setFavFacilityIcon = () => {
     return (lat === favFacility?.lat && lng === favFacility?.lng) ? FavFacility : POIRed ;
@@ -59,7 +62,9 @@ export default function SchoolDetails({ profileId, school }) {
             E-Mail: {school.EMAIL}, <br />
             Straße: {school.STRASSE},<br />
             Plz: {school.PLZ},
-            Ort: {school.ORT}
+            Ort: {school.ORT} <br />
+            Koordinaten: [{school.Y}, {school.X}]
+            <FacilityDetailsButton lat={lat} lng={lng}/>
         </Popup>
       </Marker>
   );

@@ -57,7 +57,8 @@ export default function KindergardenDetails({ profileId, kindergarden }) {
             E-Mail: {kindergarden.EMAIL}, <br />
             Straße: {kindergarden.STRASSE} {kindergarden.HAUSBEZ} ,<br />
             Plz: {kindergarden.PLZ},
-            Ort: {kindergarden.ORT}
+            Ort: {kindergarden.ORT}, <br />
+            Koordinaten: [{kindergarden.Y}, {kindergarden.X}]
         </Popup>
         </Marker>
   );

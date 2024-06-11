@@ -58,7 +58,8 @@ export default function SocialTeenagerProjectDetails({ profileId, project }) {
             Tel.: {project.TELEFON},<br />
             Straße: {project.STRASSE},<br />
             Plz: {project.PLZ},
-            Ort: {project.ORT}
+            Ort: {project.ORT} <br />
+            Koordinaten: [{project.Y}, {project.X}]
         </Popup>
         </Marker>
   );
