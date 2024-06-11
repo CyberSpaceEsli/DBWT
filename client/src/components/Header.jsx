@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Dokumentation', href: '#' },
+  { name: 'Dokumentation', href: '/apidoku' },
   { name: 'Impressum', href: '/impressum' }
 ]
 

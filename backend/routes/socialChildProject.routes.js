@@ -4,14 +4,25 @@ const router = express.Router();
 const socialChildProjectController = require("../controllers/socialChildProject.controller");
 
 // localhost:3000/api/v1/socialchildprojects/all METHOD: GET
-// Get all social child projects
+/**
+ * @swagger
+ * /api/v1/socialteenagerprojects/all:
+ *   get:
+ *     summary: Retrieve a list of all social teenager projects
+ *     description: Fetch a list of all social teenager projects from the database.
+ *     responses:
+ *       200:
+ *         description: A list of social teenager projects
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/SocialTeenagerProject'
+ *       500:
+ *         description: Server error
+ */
 router.get("/all",socialChildProjectController.all_socialChildProjects);
-
-//router.get("/:id",schoolController.on_id_school);
-
-//router.post("/onPLZ",schoolController.on_plz_school);
-
-//@TODO add your other CRUD endpoint and Methods here
 
 // * Endpoint as * Method error handling
 router.get("/*",socialChildProjectController.error);
