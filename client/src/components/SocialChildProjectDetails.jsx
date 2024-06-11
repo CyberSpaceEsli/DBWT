@@ -11,6 +11,7 @@ import FacilityDetailsButton from './FacilityDetailsButton';
 
 export default function SocialChildProjectDetails({ profileId, project }) {
   const [favFacility, setFavFacility] = useState(null);
+  const [metadata, setMetadata] = useState(null);
 
   var projectName = project.TRAEGER
   var lng = project.Y
@@ -22,7 +23,45 @@ export default function SocialChildProjectDetails({ profileId, project }) {
       setFavFacility(fetchedFavFacility);
     };
     getFavFacility();
-  }, [profileId, favFacility]);
+
+    const fetchXMLDataChildProjects = async () => {
+      try {
+        const response = await fetch('https://www.arcgis.com/sharing/rest/content/items/0b9fc5dead0647ada3ea099c0c3bce7f/info/metadata/metadata.xml');
+        if (!response.ok) {
+          throw new Error('Failed to fetch XML data');
+        }
+        if (response.ok) {
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+
+        const data = {
+          creaDate: xmlDoc.getElementsByTagName('CreaDate')[0]?.textContent || '',
+          creaTime: xmlDoc.getElementsByTagName('CreaTime')[0]?.textContent || '',
+          modDate: xmlDoc.getElementsByTagName('ModDate')[0]?.textContent || '',
+          modTime: xmlDoc.getElementsByTagName('ModTime')[0]?.textContent || '',
+          languageCode: xmlDoc.getElementsByTagName('languageCode')[0]?.getAttribute('value') || '',
+          rpOrgName: xmlDoc.getElementsByTagName('rpOrgName')[0]?.textContent || '',
+          eMailAdd: xmlDoc.getElementsByTagName('eMailAdd')[0]?.textContent || '',
+          resTitle: xmlDoc.getElementsByTagName('resTitle')[0]?.textContent || '',
+          identCode: xmlDoc.getElementsByTagName('identCode')[0]?.textContent || '',
+        };
+
+        return data;
+        }  
+      } catch (error) {
+        console.error('Error fetching or parsing XML data:', error);
+      }
+    };
+
+    fetchXMLDataChildProjects().then(data => {
+      if (data) {
+        setMetadata(data);
+      }
+    });
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fetchProfileData = async (profileId) => {
     const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}`);
@@ -60,7 +99,24 @@ export default function SocialChildProjectDetails({ profileId, project }) {
             Straße: {project.STRASSE},<br />
             Plz: {project.PLZ},
             Ort: {project.ORT}, <br />
-            Koordinaten: [{project.Y}, {project.X}] <br />
+            Koordinaten: [{project.Y}, {project.X}]
+            {metadata ? (
+              <div>
+                <p><strong>Metadaten</strong><br />
+                Erstellungs-Datum/Zeit: {metadata.creaDate};
+                {metadata.creaTime}<br />
+                Modifikations-Datum/Zeit: {metadata.modDate};
+                {metadata.modTime}<br />
+                Sprache: {metadata.languageCode}<br />
+                Organization Name: {metadata.rpOrgName}<br />
+                E-Mail: {metadata.eMailAdd}<br />
+                Institution: {metadata.resTitle}<br />
+                Datenquelle: {metadata.identCode}</p>
+     
+              </div>
+            ) : (
+              <p>Loading metadata...</p>
+            )}
             <FacilityDetailsButton lat={lat} lng={lng}/>
         </Popup>
         </Marker>

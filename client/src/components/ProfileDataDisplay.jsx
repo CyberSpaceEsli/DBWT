@@ -7,17 +7,6 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
       const [favFacility, setFavFacility] = useState('');
 
      useEffect(() => {
-      const fetchProfileData = async () => {
-        const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}`);
-          if (res.ok) {
-            const json = await res.json();
-            return json;
-          } else {
-            console.error('Failed to fetch profile:', res.statusText);
-            return null;
-          }
-      };
-
       const getAddress = async () => {
 
         const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`);
@@ -54,8 +43,6 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
         }
 
       }
-
-      fetchProfileData();
 
       if (profileId) {
         if (profile.favFacility && profile.favFacility.length > 0) {
@@ -135,7 +122,6 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
           ) : (
             <p id="facility" className="mt-2 block text-sm leading-6 text-gray-900">Keine Lieblingseinrichtung ausgewählt.</p>
           )}
-          {console.log("BBB:", favFacility)}
 
         <div className="mt-4 mb-4 border-t border-slate-300"></div>
 

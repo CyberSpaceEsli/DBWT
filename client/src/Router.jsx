@@ -36,7 +36,7 @@ function Router({ isAuthenticated, setAuthStatus }) {
 
             {/* Home */}
             {profiles && profiles.map((profile) => (
-            <Route index key={profile._id} element={<Home isAuthenticated={isAuthenticated} profileId={profile._id} />} />
+            <Route index key={profile._id} element={<Home isAuthenticated={isAuthenticated} profileId={profile._id} profile={profile}/>} />
               ))}
 
             {/* Impressum */}

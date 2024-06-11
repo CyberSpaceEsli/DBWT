@@ -39,6 +39,7 @@ export default function FacilityDetailsButton({ lat , lng }) {
     return (
       <div>
         <p>
+          <strong>Weitere Informationen zur Institution:</strong>  <br/>
           OSM ID: {place_id} <br/>
           Klassifikation: {type} <br/>
           Platzierung: {place_rank} <br/>
@@ -58,9 +59,7 @@ export default function FacilityDetailsButton({ lat , lng }) {
             <button onClick={() => getFacilityDetails(lat, lng)} className="underline text-indigo-600 text-md">POI Informationen</button>
              <br />
              {facilityDetails && toggleFacilityDetails &&(
-                <div>
-                  <h3 className="mt-2 mb-2 font-semibold">Weitere Informationen zur Institution:</h3>
-              
+                <div>              
                   {renderFacilityDetails()}
                 </div>
               )}

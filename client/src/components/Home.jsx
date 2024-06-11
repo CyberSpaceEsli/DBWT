@@ -1,10 +1,10 @@
 import Filter from './Filter.jsx'
 import Map from './Map.jsx'
 import { useState, useEffect } from "react"
-//import ProfileDataDisplay from './ProfileDataDisplay.jsx';
+import ProfileDataDisplay from './ProfileDataDisplay.jsx';
 import PropTypes from 'prop-types';
 
-function Home({ profileId, isAuthenticated }) {
+function Home({ profileId, profile, isAuthenticated }) {
   const [showSchoolDetails, setShowSchoolDetails] = useState(false);
   const [showKindergardenDetails, setShowKindergardenDetails] = useState(false);
   const [showSocialChildProjectDetails, setShowSocialChildProjectDetails] = useState(false);
@@ -25,16 +25,10 @@ function Home({ profileId, isAuthenticated }) {
     }
   }, [showAll]);
 
-  //var username;
-  //var street;
-  //var city;
-  //var plz;
+  var username;
 
     if(isAuthenticated) {
-      //username = localStorage.username;
-      //street = localStorage.street;
-      //city = localStorage.city;
-      //plz = localStorage.zip;
+      username = localStorage.username;
     }
 
   return (
@@ -42,11 +36,11 @@ function Home({ profileId, isAuthenticated }) {
       <Filter setShowSchoolDetails={setShowSchoolDetails} setShowKindergardenDetails={setShowKindergardenDetails} setShowSocialChildProjectDetails={setShowSocialChildProjectDetails} setShowSocialTeenagerProjectDetails={setShowSocialTeenagerProjectDetails} setShowAll={setShowAll}/>
       <Map showSchoolDetails={showSchoolDetails} showKindergardenDetails={showKindergardenDetails} showSocialChildProjectDetails={showSocialChildProjectDetails} showSocialTeenagerProjectDetails={showSocialTeenagerProjectDetails} profileId={profileId}/>
       
-      {/* 
+       
         <div className="my-5 lg:container md:mx-auto p-6 lg:p-0">
-        <ProfileDataDisplay username={username} isAuthenticated={isAuthenticated} street={street} city={city} plz={plz} />
+        <ProfileDataDisplay username={username} profileId={profileId} profile={profile} isAuthenticated={isAuthenticated} />
       </div>
-      */}
+      
 
      </div>
   )
@@ -56,5 +50,6 @@ export default Home
 
 Home.propTypes = {
   profileId: PropTypes.string, 
+  profile: PropTypes.any, 
   isAuthenticated: PropTypes.bool
 };
