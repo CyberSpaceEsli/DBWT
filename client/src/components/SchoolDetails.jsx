@@ -63,7 +63,6 @@ export default function SchoolDetails({ profileId, school }) {
             Straße: {school.STRASSE},<br />
             Plz: {school.PLZ},
             Ort: {school.ORT} <br />
-            Koordinaten: [{school.Y}, {school.X}]
             <FacilityDetailsButton lat={lat} lng={lng}/>
         </Popup>
       </Marker>
