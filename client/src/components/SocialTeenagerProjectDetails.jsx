@@ -65,7 +65,7 @@ export default function SocialTeenagerProjectDetails({ profileId, project }) {
   }, []);
 
   const fetchProfileData = async (profileId) => {
-    const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}`);
+    const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}`);
       if (res.ok) {
         const json = await res.json();
         return json.favFacility.length > 0 ? json.favFacility[0] : null;

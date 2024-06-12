@@ -76,7 +76,7 @@ app.use("/api/v1/schools", school);
 app.use("/api/v1/kindergarden", kindergarden);
 app.use("/api/v1/socialchildprojects", socialChildProjects);
 app.use("/api/v1/socialteenagerprojects", socialTeenagerProjects);
-app.use("/api/v1/profile", profileRoutes);
+app.use("/api/v1/profiles", profileRoutes);
 
 app.listen(port, ()=>{
     console.log("Server is running on localhost:", port , " !")

@@ -9,7 +9,7 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
      useEffect(() => {
       const getAddress = async () => {
 
-        const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`);
+        const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/homeaddress`);
 
         if (res.ok) {
           const json = await res.json();
@@ -22,7 +22,7 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
 
       const getFavFacility = async () => {
 
-          const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/favfacility`)
+          const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/favfacility`)
 
           const json = await res.json();
 
@@ -61,7 +61,7 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
   const handleDeleteAddress = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`, {
+    const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/homeaddress`, {
           method: 'DELETE'
         })
     
@@ -84,7 +84,7 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
    const handleDeleteFavFacility = async (e) => {
       e.preventDefault();
 
-          const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/favfacility`, {
+          const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/favfacility`, {
             method: 'DELETE'
           })
         

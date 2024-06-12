@@ -9,7 +9,7 @@ export default function FavFacilityButton({ profileId, facilityName, lat, lng })
     e.preventDefault();
 
   // Check if favFacility is present //@TODO further progress find out why favFacility in has length 0
-     fetch(`http://localhost:3000/api/v1/profile/${profileId}`)
+     fetch(`http://localhost:3000/api/v1/profiles/${profileId}`)
       .then(res => res.json())
       .then(profile => {
         if (profile.favFacility && profile.favFacility.length > 0) {
@@ -22,7 +22,7 @@ export default function FavFacilityButton({ profileId, facilityName, lat, lng })
 
   const createFavFacility = async () => {
 
-    const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/favfacility`, {
+    const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/favfacility`, {
           method: 'POST',
           body: JSON.stringify({name: facilityName, lat: lat, lng: lng}),
           headers: {
@@ -53,7 +53,7 @@ export default function FavFacilityButton({ profileId, facilityName, lat, lng })
 
   const updateFavFacility = async () => {
 
-     const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/favfacility`, {
+     const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/favfacility`, {
           method: 'PUT',
           body: JSON.stringify({name: facilityName, lat: lat, lng: lng}),
           headers: {

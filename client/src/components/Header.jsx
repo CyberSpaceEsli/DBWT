@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Dokumentation', href: '/apidoku' },
+  { name: 'Dokumentation', href: 'http://localhost:3000/apidoku', newTab: true },
   { name: 'Impressum', href: '/impressum' }
 ]
 
@@ -39,7 +39,7 @@ export default function Header({ isAuthenticated, setAuthStatus }) {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+              <a key={item.name} href={item.href} target={item.newTab ? '_blank' : '_self'}  className="text-sm font-semibold leading-6 text-gray-900">
                 {item.name}
               </a>
             ))}

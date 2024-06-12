@@ -36,7 +36,7 @@ export default function Map({ profileId, showSchoolDetails, showKindergardenDeta
     // Fetch address data
     const fetchAddress = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`);
+        const response = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/homeaddress`);
         if (!response.ok) {
           throw new Error('Failed to fetch home address');
         }

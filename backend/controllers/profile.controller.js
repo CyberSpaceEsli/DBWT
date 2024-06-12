@@ -20,6 +20,8 @@ exports.on_id_profile = (req, res) =>  {
 
 // Handling user signup
 exports.signup =  (req, res) => {
+    const {username, password} = req.body
+
     Profile.findOne({ username: req.body.username })
         .then(existingProfile => {
             if (existingProfile) {
@@ -30,7 +32,7 @@ exports.signup =  (req, res) => {
       username: req.body.username,
       password: req.body.password
     })
-    .then(() => res.status(200).json({message: 'Profile created successfully'}))
+    .then(() => res.status(200).json({username, password, message: 'Profile created successfully'}))
     .catch(err => res.status(500).json({ error: err.message }));
   };
  
@@ -51,14 +53,15 @@ exports.login = (req, res) => {
                 return res.status(400).json({ message: 'Invalid credentials' });
             }
 
-            res.status(200).json({ message: 'Login successful' });
+            res.status(200).json({username, password, message: 'Login successful' });
         })
         .catch(err => res.status(500).json({ error: err.message }));
 };
 
 // Logout controller profile/logout
 exports.logout = (req, res) => {
-    res.status(200).json({ message: 'Logged out successfully' });
+    const id = req.params
+    res.status(200).json({id, message: 'Logged out successfully' });
 };
 
 

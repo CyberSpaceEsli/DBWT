@@ -8,14 +8,13 @@ import ProfileDataForm from "./components/ProfileDataForm.jsx";
 import PropTypes from 'prop-types';
 import './App.css'
 import { useState, useEffect } from 'react';
-import ApiDocumentation from "./components/ApiDocumentation.jsx";
 
 function Router({ isAuthenticated, setAuthStatus }) {
   const [profiles, setProfile] = useState('');
 
   useEffect(() => {
       const fetchProfiles = async () => {
-      const res = await fetch('http://localhost:3000/api/v1/profile/all');
+      const res = await fetch('http://localhost:3000/api/v1/profiles/all');
       const json = await res.json();
 
       if(res.ok) {
@@ -41,9 +40,6 @@ function Router({ isAuthenticated, setAuthStatus }) {
 
             {/* Impressum */}
             <Route path="impressum" element={<Impressum />} />
-
-            {/* API Documentation */}
-            <Route path="apidoku" element={<ApiDocumentation />} />
 
              {/* LogIn */}
             <Route path="anmelden" element={<LogIn setAuthStatus={setAuthStatus}/>} />

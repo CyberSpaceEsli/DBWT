@@ -19,7 +19,6 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
 
     if(isAuthenticated) {
       username = localStorage.username;
-      console.log("username", username);
     }
    
     const togglePasswordChange = () => {
@@ -34,7 +33,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
 
     e.preventDefault();
 
-    fetch(`http://localhost:3000/api/v1/profile/${profileId}`)
+    fetch(`http://localhost:3000/api/v1/profiles/${profileId}`)
       .then(res => res.json())
       .then(profile => {
         if (profile.street && profile.city && profile.zip ) {
@@ -55,7 +54,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
             return;
         }
 
-        const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}`, {
+        const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}`, {
           method: 'PUT',
           body: JSON.stringify({username: newUsername, password: newPassword}),
           headers: {
@@ -76,14 +75,13 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
           setNewPassword('')
           setConfirmPassword('')
           setError(null)
-          console.log("new password:", json.password)
           localStorage.setItem('username', json.username);
         }
     };
 
      const createHomeaddress = async () => {
 
-        const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`, {
+        const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/homeaddress`, {
           method: 'POST',
           body: JSON.stringify({street: street, city: city, zip: plz}),
           headers: {
@@ -113,7 +111,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
 
     const updateHomeaddress = async () => {
 
-        const res = await fetch(`http://localhost:3000/api/v1/profile/${profileId}/homeaddress`, {
+        const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/homeaddress`, {
           method: 'PUT',
           body: JSON.stringify({street: street, city: city, zip: plz}),
           headers: {
