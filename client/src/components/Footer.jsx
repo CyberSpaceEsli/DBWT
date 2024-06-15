@@ -20,7 +20,7 @@ export default function Footer() {
 
           <p className="mb-4">
             Die verwendeten Daten für dieses Projekt stammen aus dem <a href="https://portal-chemnitz.opendata.arcgis.com/search?tags=bildungfamilie" target="_blank" className="underline hover:text-green-500">Open Data Portal von Chemnitz</a>. 
-            Sie umfassen Informationen zu Institutionen aus den Bereichen Bildung, Familie und Soziales, 
+            Das Portal umfasst unteranderem Informationen zu Institutionen aus den Bereichen Bildung, Familie und Soziales, 
             darunter Schulen, Kindergärten, Schulsozialarbeiten und Jugendberufshilfen.
           </p>
         </div>

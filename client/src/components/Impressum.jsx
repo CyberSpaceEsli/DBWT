@@ -36,7 +36,7 @@ export default function Impressum() {
               <p className="mt-6 text-lg leading-8 text-gray-600">
                 Im Modul Datenbanken & Webtechniken bestand die Anforderung, eine Full-Stack-Webanwendung zu entwickeln, 
                 wobei die Wahl der Technologien freigestellt war. Für die Realisierung dieses Projekts entschied ich mich 
-                für den MERN-Stack. Weiteres zum Aufbau der Webanwendung:
+                für den MERN-Stack:
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
                 {features.map((feature) => (
@@ -50,7 +50,7 @@ export default function Impressum() {
                 ))}
               </dl>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Zur Umsetzung des Projekts wurden weitere Bibliotheken und Tools verwendet, um die Entwicklung der Webanwendung zu erleichtern. Die wichtigsten Tools werden im kommenden Abschnitt verlinkt:
+                Zur Umsetzung des Projekts wurden weitere Bibliotheken und Tools verwendet, um die Entwicklung der Webanwendung zu erleichtern:
               </p>
               <p className="mt-6 text-base leading-8 text-gray-600">
                 <a href="https://v2.tailwindcss.com/" className="font-semibold text-green-500 text-md hover:text-green-600">TailwindCSS.</a> Ein CSS-Framework zum schnellen erstellen von UI-Komponenten durch den Utility-First Ansatz, wobei die CSS-Klassen direkt im Markup eingebunden werden.
@@ -67,8 +67,14 @@ export default function Impressum() {
               <p className="mt-6 text-base leading-8 text-gray-600">
                 <a href="https://swagger.io/tools/swagger-ui/" className="font-semibold text-green-500 text-md hover:text-green-600">SwaggerUI.</a> Das Tool ermöglicht es die Ressourcen der API zu visualisieren und damit zu interagieren, ohne dass die Implementationslogik bereits vorhanden sein muss.
               </p>
+              <p className="mt-6 text-base leading-8 text-gray-600">
+                <a href="https://leafletjs.com/examples/quick-start/" className="font-semibold text-green-500 text-md hover:text-green-600">Leaflet.</a> Verantwortlich für die Darstellung der interaktiven Karte ist die Open-Source JS-Bibliothek Leaflet, das mit Open Street Map zusammenabreit. Zusätzlich gibt es <a href="https://react-leaflet.js.org/docs/start-introduction/" className="underline hover:text-green-600">React Leaflet</a>, welches das Zusammnspiel der beiden Technologien vereinfacht.
+              </p>
+              <p className="mt-6 text-base leading-8 text-gray-600">
+                <a href="https://nominatim.org/" className="font-semibold text-green-500 text-md hover:text-green-600">Nominatim.</a> Für zusätzliche Daten zu Orten auf der Erde eignet sich das Open-Source Tool Nominatim. Mit der Adresse oder den Koordniaten werden weitere Open Street Map Daten zu Einrichtungen gefunden. 
+              </p>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Das <a href="https://www.flaticon.com/de/kostenloses-icon/sehenswurdigkeit_11729889" className=" text-gray-900 underline text-md hover:text-green-600">Logo</a> für diese Webanwedung stammt aus der Icon-Bibliothek FlatIcon.
+                Das <a href="https://www.flaticon.com/de/kostenloses-icon/sehenswurdigkeit_11729889" className=" text-gray-900 underline text-md hover:text-green-600" target="_blank">Logo</a> für diese Webanwedung stammt aus der Icon-Bibliothek FlatIcon.
               </p>
             </div>
           </div>
