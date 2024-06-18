@@ -7,6 +7,7 @@ import NoPage from "./components/NoPage.jsx";
 import ProfileDataForm from "./components/ProfileDataForm.jsx";
 import PropTypes from 'prop-types';
 import './App.css'
+import ForgetPassword from "./components/ForgetPassword.jsx";
 import { useState, useEffect } from 'react';
 
 function Router({ isAuthenticated, setAuthStatus }) {
@@ -46,6 +47,11 @@ function Router({ isAuthenticated, setAuthStatus }) {
 
              {/* SignUp */}
             <Route path="registrieren" element={<SignUp />} />
+
+            {/* ForgetPassword */}
+            {profiles && profiles.map((profile) => (
+            <Route index key={profile._id} path="passwort" element={<ForgetPassword  profileId={profile._id} />} />
+            ))}
 
              {/* Profile Data */}
              {profiles && profiles.map((profile) => (

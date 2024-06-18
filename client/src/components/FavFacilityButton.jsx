@@ -62,7 +62,7 @@ export default function FavFacilityButton({ profileId, facilityName, lat, lng })
       });
 
     const json = await res.json();
-  console.log("PUT")
+    console.log("PUT")
 
     if (!res.ok) {
         console.error('Failed to fetch address:', res.statusText);
@@ -73,17 +73,13 @@ export default function FavFacilityButton({ profileId, facilityName, lat, lng })
 
     if (res.ok) {
         setFavFacility({ facilityName, lat, lng })
-        console.log("favLatCreate",  favFacility.name)
-        console.log("favLngCreate", favFacility.lat)
-        console.log("favNameCreate", favFacility.lng)
-
         console.log('successfully updated fav facility', json)
     }
    }
 
   return (
     <div>
-        <button onClick={handleSubmitFavFacility} type="button" label="Fav_Facility" title="Favourite Facility" className="h-8 w-48 px-1.5 rounded bg-green-400 text-white mb-3 hover:bg-green-500">Favorite Einrichtung speichern</button><br />
+        <button onClick={handleSubmitFavFacility} type="button" label="Fav_Facility" title="Favourite Facility" className="h-8 w-48 px-1.5 rounded bg-green-400 text-white mt-3 hover:bg-green-500">Favorite Einrichtung speichern</button><br />
         <div className="hidden">
         <FavFacilityDisplayName facilityName={facilityName} />
         </div>

@@ -73,7 +73,7 @@ export default function LogIn({ setAuthStatus }) {
                   Passwort
                 </label>
                 <div className="text-sm">
-                  <a href="#" className="font-semibold text-green-600 hover:text-green-500">
+                  <a href="/passwort" className="font-semibold text-green-600 hover:text-green-500">
                     Passwort vergessen?
                   </a>
                 </div>

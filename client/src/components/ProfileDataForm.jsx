@@ -103,9 +103,6 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
         if (res.ok) {
           setAddress({ street, city, plz });
           setError(null);
-          localStorage.setItem('street', address.street);
-          localStorage.setItem('city', address.city);
-          localStorage.setItem('plz', address.zip);
         }
     };
 
@@ -133,9 +130,6 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
         if (res.ok) {
           setAddress({ street, city, plz });
           setError(null)
-          localStorage.setItem('street', address.street);
-          localStorage.setItem('city', address.city);
-          localStorage.setItem('plz', address.zip);
         }
     };
 

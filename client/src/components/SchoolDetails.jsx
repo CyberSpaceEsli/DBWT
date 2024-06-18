@@ -92,7 +92,6 @@ export default function SchoolDetails({ profileId, school }) {
         icon={customIcon}
         position={[school.Y, school.X]} >
         <Popup>
-           <FavFacilityButton facilityName={schoolName} lat={lat} lng={lng} profileId={profileId}/>
             <strong>{school.BEZEICHNUNG}</strong><br />
             Art: {school.ART},<br />
             Tel.: {school.TELEFON},<br />
@@ -100,6 +99,7 @@ export default function SchoolDetails({ profileId, school }) {
             Straße: {school.STRASSE},<br />
             Plz: {school.PLZ},
             Ort: {school.ORT} <br />
+            <FavFacilityButton facilityName={schoolName} lat={lat} lng={lng} profileId={profileId}/>
             {metadata ? (
               <div>
                 <p><strong>Metadaten</strong><br />

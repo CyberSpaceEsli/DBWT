@@ -93,13 +93,13 @@ export default function KindergardenDetails({ profileId, kindergarden }) {
         icon={customIcon}
         position={[kindergarden.Y, kindergarden.X]} >
         <Popup>
-            <FavFacilityButton facilityName={kindergardenName} lat={lat} lng={lng} profileId={profileId}/>
             <strong>{kindergarden.BEZEICHNUNG}</strong><br />
             Tel.: {kindergarden.TELEFON},<br />
             E-Mail: {kindergarden.EMAIL}, <br />
             Straße: {kindergarden.STRASSE} {kindergarden.HAUSBEZ} ,<br />
             Plz: {kindergarden.PLZ},
-            Ort: {kindergarden.ORT}, <br />
+            Ort: {kindergarden.ORT} <br />
+            <FavFacilityButton facilityName={kindergardenName} lat={lat} lng={lng} profileId={profileId}/>
             {metadata ? (
               <div>
                 <p><strong>Metadaten</strong><br />

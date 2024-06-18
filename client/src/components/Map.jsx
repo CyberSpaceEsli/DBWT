@@ -20,18 +20,18 @@ export default function Map({ profileId, showSchoolDetails, showKindergardenDeta
 
 
   useEffect(() => {
-     const fetchData = async (url, setter) => {
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+      const fetchFacility = async (url, setter) => {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const json = await response.json();
+          setter(json);
+        } catch (err) {
+          console.error('Error fetching data:', err);
         }
-        const json = await response.json();
-        setter(json);
-      } catch (err) {
-        console.error('Error fetching data:', err);
       }
-    };
 
     // Fetch address data
     const fetchAddress = async () => {
@@ -55,10 +55,10 @@ export default function Map({ profileId, showSchoolDetails, showKindergardenDeta
       fetchAddress();
     }
 
-    fetchData('http://localhost:3000/api/v1/schools/all', setSchools);
-    fetchData('http://localhost:3000/api/v1/kindergarden/all', setKindergarden);
-    fetchData('http://localhost:3000/api/v1/socialchildprojects/all', setSocialChildProjects);
-    fetchData('http://localhost:3000/api/v1/socialteenagerprojects/all', setSocialTeenagerProjects);
+    fetchFacility('http://localhost:3000/api/v1/schools/all', setSchools);
+    fetchFacility('http://localhost:3000/api/v1/kindergarden/all', setKindergarden);
+    fetchFacility('http://localhost:3000/api/v1/socialchildprojects/all', setSocialChildProjects);
+    fetchFacility('http://localhost:3000/api/v1/socialteenagerprojects/all', setSocialTeenagerProjects);
 
   }, [profileId]);
 

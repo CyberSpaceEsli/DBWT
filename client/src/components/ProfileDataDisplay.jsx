@@ -14,15 +14,12 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
         if (res.ok) {
           const json = await res.json();
           setAddress(json);
-          localStorage.setItem('street', json.street);
-          localStorage.setItem('city', json.city);
-          localStorage.setItem('plz', json.zip);
         }
       };
 
       const getFavFacility = async () => {
 
-          const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/favfacility`)
+          const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/favfacility`);
 
           const json = await res.json();
 
@@ -63,20 +60,17 @@ export default function ProfileDataDisplay({ profileId, profile, username, isAut
 
     const res = await fetch(`http://localhost:3000/api/v1/profiles/${profileId}/homeaddress`, {
           method: 'DELETE'
-        })
+        });
     
-    const json = await res.json()
+    const json = await res.json();
 
     if (!res.ok) {
         console.error('Failed to fetch address:', res.statusText);
     }
 
     if (res.ok) {
-      setAddress('')
-      localStorage.removeItem('street');
-      localStorage.removeItem('city');
-      localStorage.removeItem('plz');
-      console.log('successfully deleted address', json)
+      setAddress('');
+      console.log('successfully deleted address', json);
     }
 
   }

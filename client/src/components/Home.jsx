@@ -1,6 +1,6 @@
 import Filter from './Filter.jsx'
 import Map from './Map.jsx'
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import ProfileDataDisplay from './ProfileDataDisplay.jsx';
 import PropTypes from 'prop-types';
 
@@ -9,21 +9,6 @@ function Home({ profileId, profile, isAuthenticated }) {
   const [showKindergardenDetails, setShowKindergardenDetails] = useState(false);
   const [showSocialChildProjectDetails, setShowSocialChildProjectDetails] = useState(false);
   const [showSocialTeenagerProjectDetails, setShowSocialTeenagerProjectDetails] = useState(false);
-  const [showAll, setShowAll] = useState(false);
-
-  useEffect(() => {
-    if (showAll) {
-      setShowSchoolDetails(true);
-      setShowKindergardenDetails(true);
-      setShowSocialChildProjectDetails(true);
-      setShowSocialTeenagerProjectDetails(true);
-    } else {
-      setShowSchoolDetails(false);
-      setShowKindergardenDetails(false);
-      setShowSocialChildProjectDetails(false);
-      setShowSocialTeenagerProjectDetails(false);
-    }
-  }, [showAll]);
 
   var username;
 
@@ -33,7 +18,7 @@ function Home({ profileId, profile, isAuthenticated }) {
 
   return (
     <div className="my-20 md:my-32">
-      <Filter setShowSchoolDetails={setShowSchoolDetails} setShowKindergardenDetails={setShowKindergardenDetails} setShowSocialChildProjectDetails={setShowSocialChildProjectDetails} setShowSocialTeenagerProjectDetails={setShowSocialTeenagerProjectDetails} setShowAll={setShowAll}/>
+      <Filter setShowSchoolDetails={setShowSchoolDetails} setShowKindergardenDetails={setShowKindergardenDetails} setShowSocialChildProjectDetails={setShowSocialChildProjectDetails} setShowSocialTeenagerProjectDetails={setShowSocialTeenagerProjectDetails}/>
       <Map showSchoolDetails={showSchoolDetails} showKindergardenDetails={showKindergardenDetails} showSocialChildProjectDetails={showSocialChildProjectDetails} showSocialTeenagerProjectDetails={showSocialTeenagerProjectDetails} profileId={profileId}/>
       
        
