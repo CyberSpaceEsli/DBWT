@@ -97,7 +97,7 @@ export default function SocialTeenagerProjectDetails({ profileId, project }) {
             Leistung: {project.LEISTUNGEN},<br />
             Tel.: {project.TELEFON},<br />
             Straße: {project.STRASSE},<br />
-            Plz: {project.PLZ},
+            PLZ: {project.PLZ},
             Ort: {project.ORT} <br />
             <FavFacilityButton facilityName={projectName} lat={lat} lng={lng} profileId={profileId}/>
             {metadata ? (

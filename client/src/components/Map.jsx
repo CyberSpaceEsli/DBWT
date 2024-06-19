@@ -129,7 +129,7 @@ export default function Map({ profileId, showSchoolDetails, showKindergardenDeta
         <Popup>
             <strong>Mein Zuhause</strong><br />
             Straße: {homeAddress.street},<br />
-            Plz: {homeAddress.zip},
+            PLZ: {homeAddress.zip},
             Ort: {homeAddress.city} <br />
         </Popup>
         </Marker>

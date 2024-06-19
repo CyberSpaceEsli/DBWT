@@ -97,7 +97,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
         console.log("err",error);
         setAddress(address.street='');
         setAddress(address.city='');
-        setAddress(address.plz= 0)
+        setAddress(address.plz= '')
        }
 
         if (res.ok) {
@@ -124,7 +124,7 @@ export default function ProfileData({ isAuthenticated, profile, profileId }) {
         console.log("err",error);
         setAddress(address.street='');
         setAddress(address.city='');
-        setAddress(address.plz= 0)
+        setAddress(address.plz= '')
        }
 
         if (res.ok) {

@@ -97,7 +97,7 @@ export default function SchoolDetails({ profileId, school }) {
             Tel.: {school.TELEFON},<br />
             E-Mail: {school.EMAIL}, <br />
             Straße: {school.STRASSE},<br />
-            Plz: {school.PLZ},
+            PLZ: {school.PLZ},
             Ort: {school.ORT} <br />
             <FavFacilityButton facilityName={schoolName} lat={lat} lng={lng} profileId={profileId}/>
             {metadata ? (

@@ -15,7 +15,7 @@ const ProfileSchema = new Schema({
     favFacility: [FavFacility],
     street: {type:"String"},
     city: {type:"String"},
-    zip: {type:"Number"},
+    zip: {type:"String"},
     lat: {type:"Number"},
     long: {type:"Number"}
 }, { timestamps: true });

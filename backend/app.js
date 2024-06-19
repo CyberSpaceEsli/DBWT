@@ -43,7 +43,7 @@ const options = {
 const swaggerSpacs = swaggerJsdoc(options);
 
 const corsOption = {
-    origin: "http://localhost:5173"
+    origin: process.env.ALLOW_ORIGIN
 }
 
 //@TODO create your own Port number here, i.e.:
@@ -57,8 +57,8 @@ mongoose.connect(mongoDbUrl)
 
 //middleware 
 app.use((req, res, next) => {
-    console.log(req.path, req.method, res.statusCode)
-    next()
+    console.log(req.path, req.method, res.statusCode);
+    next();
 } )
 
 

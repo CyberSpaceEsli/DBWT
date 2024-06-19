@@ -97,7 +97,7 @@ export default function KindergardenDetails({ profileId, kindergarden }) {
             Tel.: {kindergarden.TELEFON},<br />
             E-Mail: {kindergarden.EMAIL}, <br />
             Straße: {kindergarden.STRASSE} {kindergarden.HAUSBEZ} ,<br />
-            Plz: {kindergarden.PLZ},
+            PLZ: {kindergarden.PLZ},
             Ort: {kindergarden.ORT} <br />
             <FavFacilityButton facilityName={kindergardenName} lat={lat} lng={lng} profileId={profileId}/>
             {metadata ? (

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import FavFacilityDisplayName from './FavFacilityDisplayName';
 
 export default function ProfileDataDisplay({ profileId, profile, username, isAuthenticated }) { 
-      const [address, setAddress] = useState({ street: '', city: '', zip: 0 });
+      const [address, setAddress] = useState({ street: '', city: '', zip: '' });
       const [favFacility, setFavFacility] = useState('');
 
      useEffect(() => {
