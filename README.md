@@ -41,9 +41,9 @@ db.createCollection("profiles")
 
 7. Import the csv-Files to the corresponding collection
 
-## 📝 Installation
+## 📌 Project Set Up
 
-A little intro about the installation. 
+#### Fetch Project from GitHub
 ```
 $ git clone https://github.com/CyberSpaceEsli/DBWT.git
 $ cd DBWT
