@@ -13,9 +13,15 @@ const navigation = [
 export default function Header({ isAuthenticated, setAuthStatus }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('username');
+    setAuthStatus(false);
+  };
+
   return (
     <div className="bg-white">
-      <header className="absolute inset-x-0 top-0 z-50">
+      <header className="absolute inset-x-0 top-0 z-60">
         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1 items-center">
             <a href="/" className="-m-1.5 p-1.5">
@@ -87,19 +93,15 @@ export default function Header({ isAuthenticated, setAuthStatus }) {
                       {item.name}
                     </a>
                   ))}
+                  {isAuthenticated ? (
+                    <div className="border-t broder-gray-600">
+                      <a href="/profil" className="-mx-3 block rounded-lg px-3 pt-4 pb-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Persönliche Daten</a>
+                      <a href="/" onClick={handleLogout} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Abmelden</a>
+                    </div>
+                  ) : (
+                    <a href="/anmelden" className="-mx-3 block rounded-lg px-3 py-4 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Anmelden</a>
+                   )}                    
                 </div>
-                {isAuthenticated ? (
-                  <Profile setAuthStatus={setAuthStatus}/>
-                ): (
-                <div className="py-6">
-                  <a
-                    href="/anmelden"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Anmelden
-                  </a>
-                </div>
-                )}
                 </div>
             </div>
           </Dialog.Panel>
