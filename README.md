@@ -63,6 +63,14 @@ $npm install
 
 ## 🚀 Run Application
 
-``npm run thursday && npm run dev``
+*  Start Backend
+```
+npm run thursday
+```
+
+*  Start Frontend
+```
+npm run dev
+```
 
 > Check [localhost:5173](http://localhost:5173) for running application.
