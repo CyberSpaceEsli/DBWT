@@ -108,7 +108,7 @@ export default function KindergardenDetails({ profileId, kindergarden }) {
                 Modifikations-Datum/Zeit: {metadata.modDate};
                 {metadata.modTime}<br />
                 Sprache: {metadata.languageCode}<br />
-                Organization Name: {metadata.rpOrgName}<br />
+                Organisation: {metadata.rpOrgName}<br />
                 E-Mail: {metadata.eMailAdd}<br />
                 Institution: {metadata.resTitle}<br />
                 Datenquelle: {metadata.identCode}</p>

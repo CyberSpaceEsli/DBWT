@@ -22,7 +22,9 @@ export default function SchoolDetails({ profileId, school }) {
       const fetchedFavFacility = await fetchProfileData(profileId);
       setFavFacility(fetchedFavFacility);
     };
-    getFavFacility();
+
+      getFavFacility();
+
 
     const fetchXMLDataSchools = async () => {
       try {
@@ -108,7 +110,7 @@ export default function SchoolDetails({ profileId, school }) {
                 Modifikations-Datum/Zeit: {metadata.modDate};
                 {metadata.modTime}<br />
                 Sprache: {metadata.languageCode}<br />
-                Organization Name: {metadata.rpOrgName}<br />
+                Organisation: {metadata.rpOrgName}<br />
                 E-Mail: {metadata.eMailAdd}<br />
                 Institution: {metadata.resTitle}<br />
                 Datenquelle: {metadata.identCode}</p>
