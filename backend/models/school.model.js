@@ -27,6 +27,10 @@ const SchoolSchema = new Schema({
     SNUMMER: {type:"Number", required: true},
     NUMMER: {type:"Number", required: true},
     GlobalID: {type:"String", required: true},
+    CreationDate: {type:"String", required: true},
+    Creator: {type:"String", required: true},
+    EditDate: {type:"String", required: true},
+    Editor:  {type:"String", required: true}
 });
 module.exports = mongoose.model("School", SchoolSchema, "schools");
 //module.exports = mongoose.model("People", PersonSchema, "YOUR COLLECTION");
